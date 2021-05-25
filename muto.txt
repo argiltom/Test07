@@ -1,2 +1,3 @@
 why?test
 hello world
+こんにちは
