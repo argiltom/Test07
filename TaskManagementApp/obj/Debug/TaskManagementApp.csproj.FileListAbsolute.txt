@@ -1,7 +1,6 @@
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\TaskManagementApp.exe.config
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\TaskManagementApp.exe
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\TaskManagementApp.pdb
-E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csprojAssemblyReference.cache
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\MainWindow.g.cs
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\App.g.cs
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp_MarkupCompile.cache
@@ -13,3 +12,4 @@ E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.GenerateR
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.CoreCompileInputs.cache
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.exe
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.pdb
+E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.AssemblyReference.cache
