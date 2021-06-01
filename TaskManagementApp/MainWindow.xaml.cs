@@ -22,13 +22,30 @@ namespace TaskManagementApp
     {
         public MainWindow()
         {
-            InitializeComponent();
-        }
 
+            InitializeComponent();
+            Summary sum = new Summary();
+            DateTime datetime = DateTime.Now;
+            nowTimeView.Text = datetime.ToString();
+
+
+        }
+        /// <summary>
+        /// サマリー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            debugPrinter.Text = "ああああ";
         }
     }
 
+    public class Summary
+    {
+        /// <summary>
+        /// これはフィールド！！
+        /// </summary>
+        public int field;
+    }
 }
