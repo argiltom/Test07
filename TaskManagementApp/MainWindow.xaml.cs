@@ -33,27 +33,10 @@ namespace TaskManagementApp
         {
 
             InitializeComponent();
-            Summary sum = new Summary();
             nowTimeView.Text = nowTime.ToString();
 
 
         }
-        /// <summary>
-        /// サマリー
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            debugPrinter.Text = "ああああ";
-        }
     }
 
-    public class Summary
-    {
-        /// <summary>
-        /// これはフィールド！！
-        /// </summary>
-        public int field;
-    }
 }
