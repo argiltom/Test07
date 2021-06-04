@@ -37,6 +37,8 @@ namespace TaskManagementApp
             Console.WriteLine(nowTime.ToString());
             AccessorTaskList atl = new AccessorTaskList();
             atl.InitializeJsonData();
+            AccessorOptionData aod = new AccessorOptionData();
+            aod.InitializeJsonData();
         }
     }
 
