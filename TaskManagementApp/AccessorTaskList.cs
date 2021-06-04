@@ -14,7 +14,7 @@ namespace TaskManagementApp
     public class AccessorTaskList
     {
         /// <summary>
-        /// 情報を一時的にホールドしておく、最終的にはこいつに更新をドゥンドゥン加えていって、こいつをファイル入力情報にしてcsvを上書きする
+        /// csvファイルから読み取った情報をホールドしておく、最終的にはこいつに更新をドゥンドゥン加えていって、こいつをファイル入力情報にしてcsvを上書きする
         /// </summary>
         List<string[]> csvData;
         /// <summary>
@@ -22,9 +22,9 @@ namespace TaskManagementApp
         /// </summary>
         public void InitializeCsvData()
         {
-            //このプロジェクトのカレントディレクトリのパスを取得
-
-                StreamReader sr = new StreamReader(@"E:\develop\kodo1B\TaskManagementApp\F1_TaskData\taskData.csv",Encoding.UTF8);
+            //このプロジェクトの実行exeカレントディレクトリのパスを取得
+                string exePath = System.IO.Directory.GetCurrentDirectory();
+                StreamReader sr = new StreamReader(exePath+@"\..\..\F1_TaskData\taskData.csv",Encoding.UTF8);
                 List<string[]> fileData = new List<string[]>();
                 while (!sr.EndOfStream)
                 {
@@ -34,22 +34,46 @@ namespace TaskManagementApp
                 }
                 csvData = fileData;
                 //試験コード
-                foreach(string[] str in csvData){
-                    foreach(string str2 in str)
-                    {
-                        Console.Write(str2);
-                    }
-                Console.Write("\n");
-            }
-                sr.Close();
-            
-            
+                TestCord();
+                sr.Close();            
         }
-        public List<Task> getTaskList()
+        /// <summary>
+        /// 取得したファイル情報から、タスクのリストを生成し渡す．
+        /// </summary>
+        /// <returns></returns>
+        public List<Task> GetTaskList()
         {
             List<Task> taskList = new List<Task>();
-            
+            foreach(String[] taskdata in csvData)
+            {
+                Task tempTask = new Task();
+                tempTask.taskID = int.Parse(taskdata[0]);
+                tempTask.taskSummary = taskdata[1];
+                tempTask.taskInfo = taskdata[2];
+                tempTask.taskLimit = DateTime.Parse(taskdata[3]);
+                tempTask.taskPriority = int.Parse(taskdata[4]);
+                taskList.Add(tempTask);
+            }
             return taskList;
+        }
+
+        public void AddTaskList(Task inputTask)
+        {
+            string[] inputData = new string[5];
+            
+        }
+
+
+        public void TestCord()
+        {
+            foreach (string[] str in csvData)
+            {
+                foreach (string str2 in str)
+                {
+                    Console.Write(str2);
+                }
+                Console.Write("\n");
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ namespace TaskManagementApp
             InitializeComponent();
             nowTimeView.Text = nowTime.ToString();
             AccessorTaskList atl = new AccessorTaskList();
-            atl.InitializeCsvData();
+            atl.InitializeJsonData();
         }
     }
 
