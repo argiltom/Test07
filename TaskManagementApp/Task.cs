@@ -11,10 +11,10 @@ namespace TaskManagementApp
     /// </summary>
     [Serializable] public class Task
     {
-        public int taskID;
-        public string taskSummary;
-        public string taskInfo;
-        public DateTime taskLimit;
-        public int taskPriority;
+        public int taskID { set; get; }
+        public string taskSummary { set; get; }
+        public string taskInfo { set; get; }
+        public string taskLimit { set; get; }
+        public int taskPriority { set; get; }
     }
 }

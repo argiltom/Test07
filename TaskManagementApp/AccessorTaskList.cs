@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace TaskManagementApp
 {
@@ -14,28 +16,31 @@ namespace TaskManagementApp
     public class AccessorTaskList
     {
         /// <summary>
-        /// csvファイルから読み取った情報をホールドしておく、最終的にはこいつに更新をドゥンドゥン加えていって、こいつをファイル入力情報にしてcsvを上書きする
+        /// 外部変数
+        /// ID :1 
+        /// タスクリスト
         /// </summary>
-        List<string[]> csvData;
-        /// <summary>
-        /// csvファイルから情報を読み取り,csvDataに上書きする
-        /// </summary>
-        public void InitializeCsvData()
+        public List<Task> taskList;
+        public void InitializeJsonData()
         {
             //このプロジェクトの実行exeカレントディレクトリのパスを取得
-                string exePath = System.IO.Directory.GetCurrentDirectory();
-                StreamReader sr = new StreamReader(exePath+@"\..\..\F1_TaskData\taskData.csv",Encoding.UTF8);
-                List<string[]> fileData = new List<string[]>();
-                while (!sr.EndOfStream)
-                {
-                    //csvから文字列を受け取って,分割して格納する
-                    string line = sr.ReadLine();
-                    fileData.Add(line.Split(','));
-                }
-                csvData = fileData;
-                //試験コード
-                TestCord();
-                sr.Close();            
+            string exePath = System.IO.Directory.GetCurrentDirectory();
+            string getJsonString =System.IO.File.ReadAllText(exePath+ @"\..\..\F1_TaskData\taskData.json");//@特殊な文字を文字としてそのまま適用する
+
+            //JsonSerializerを使うためには、対象となるクラスのフィールドには、プロパティを設定していないといけない
+            taskList = JsonSerializer.Deserialize<List<Task>>(getJsonString);//Jsonファイルからクラスリスト生成
+
+            Task tempTask = new Task() { taskID = 1, taskSummary = "タスクのサマリー", taskInfo = "テストタスクの中身", taskLimit = DateTime.Now.ToString(), taskPriority = 21 };
+            taskList.Add(tempTask);
+            WriteJsonData();
+        }
+
+        public void WriteJsonData()
+        {
+
+            string outJsonString = JsonSerializer.Serialize<List<Task>>(taskList);//クラスからJsonStringを生成
+            string exePath = System.IO.Directory.GetCurrentDirectory();
+            System.IO.File.WriteAllText(exePath + @"\..\..\F1_TaskData\taskData.json",outJsonString);//@特殊な文字を文字としてそのまま適用する
         }
         /// <summary>
         /// 取得したファイル情報から、タスクのリストを生成し渡す．
@@ -43,37 +48,10 @@ namespace TaskManagementApp
         /// <returns></returns>
         public List<Task> GetTaskList()
         {
-            List<Task> taskList = new List<Task>();
-            foreach(String[] taskdata in csvData)
-            {
-                Task tempTask = new Task();
-                tempTask.taskID = int.Parse(taskdata[0]);
-                tempTask.taskSummary = taskdata[1];
-                tempTask.taskInfo = taskdata[2];
-                tempTask.taskLimit = DateTime.Parse(taskdata[3]);
-                tempTask.taskPriority = int.Parse(taskdata[4]);
-                taskList.Add(tempTask);
-            }
             return taskList;
-        }
-
-        public void AddTaskList(Task inputTask)
-        {
-            string[] inputData = new string[5];
             
         }
 
 
-        public void TestCord()
-        {
-            foreach (string[] str in csvData)
-            {
-                foreach (string str2 in str)
-                {
-                    Console.Write(str2);
-                }
-                Console.Write("\n");
-            }
-        }
     }
 }
