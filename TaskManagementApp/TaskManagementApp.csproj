@@ -84,9 +84,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
+    <Compile Include="Cancel.xaml.cs">
+      <DependentUpon>Cancel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskAdd.xaml.cs">
+      <DependentUpon>TaskAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskEdit.xaml.cs">
+      <DependentUpon>TaskEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskFileProcess.cs" />
     <Compile Include="TaskView.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Task.cs" />
+    <Page Include="Cancel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +114,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TaskAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TaskEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
