@@ -13,39 +13,42 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace TaskManagementApp
 {
+    
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        ///<para>外部変数:ID=3</para>
+        ///<para>現在時刻を格納する</para>
+        ///<para>利用範囲:システム全体</para>
+        /// </summary>
+        public DateTime nowTime=DateTime.Now;
         public MainWindow()
         {
 
             InitializeComponent();
-            Summary sum = new Summary();
-            DateTime datetime = DateTime.Now;
-            nowTimeView.Text = datetime.ToString();
+            nowTimeView.Text = nowTime.ToString();
+            Console.WriteLine(nowTime.ToString());
+            AccessorTaskList atl = new AccessorTaskList();
+            atl.InitializeJsonData();
+            AccessorOptionData aod = new AccessorOptionData();
+            aod.InitializeJsonData();
+            TaskView taskview = new TaskView(taskViewGrid);
 
-
+            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
+            taskview.UpdateDataGrid();
         }
-        /// <summary>
-        /// サマリー
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            debugPrinter.Text = "ああああ";
+
         }
     }
 
-    public class Summary
-    {
-        /// <summary>
-        /// これはフィールド！！
-        /// </summary>
-        public int field;
-    }
 }
