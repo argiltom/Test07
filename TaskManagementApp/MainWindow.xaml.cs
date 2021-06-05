@@ -34,7 +34,19 @@ namespace TaskManagementApp
 
             InitializeComponent();
             nowTimeView.Text = nowTime.ToString();
+            Console.WriteLine(nowTime.ToString());
+            AccessorTaskList atl = new AccessorTaskList();
+            atl.InitializeJsonData();
+            AccessorOptionData aod = new AccessorOptionData();
+            aod.InitializeJsonData();
+            TaskView taskview = new TaskView(taskViewGrid);
 
+            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
+            taskview.UpdateDataGrid();
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
