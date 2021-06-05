@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
-    class TaskFileProcess
+    public class TaskFileProcess
     {
     }
 }

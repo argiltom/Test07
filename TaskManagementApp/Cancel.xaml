@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Cancel" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="143,100,0,0" TextWrapping="Wrap" Text="キャンセルしますか？" FontSize="40" VerticalAlignment="Top"/>
-        <Button Content="はい" FontSize="33" HorizontalAlignment="Left" Margin="143,244,0,0" VerticalAlignment="Top" Width="161" Height="76"/>
-        <Button Content="いいえ" FontSize="33" HorizontalAlignment="Left" Margin="478,244,0,0" VerticalAlignment="Top" Width="156" Height="76"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,84,0,0" TextWrapping="Wrap" Text="キャンセルしますか？" FontSize="50" VerticalAlignment="Top"/>
+        <Button Content="はい" FontSize="40" HorizontalAlignment="Left" Margin="77,271,0,0" VerticalAlignment="Top" Width="201" Height="96"/>
+        <Button Content="いいえ" FontSize="40" HorizontalAlignment="Left" Margin="464,271,0,0" VerticalAlignment="Top" Width="201" Height="96"/>
 
     </Grid>
 </Window>
