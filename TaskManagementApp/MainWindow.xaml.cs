@@ -13,39 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace TaskManagementApp
 {
+    
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        ///<para>外部変数:ID=3</para>
+        ///<para>現在時刻を格納する</para>
+        ///<para>利用範囲:システム全体</para>
+        /// </summary>
+        public DateTime nowTime=DateTime.Now;
         public MainWindow()
         {
 
             InitializeComponent();
-            Summary sum = new Summary();
-            DateTime datetime = DateTime.Now;
-            nowTimeView.Text = datetime.ToString();
-
-
-        }
-        /// <summary>
-        /// サマリー
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            debugPrinter.Text = "ああああ";
+            nowTimeView.Text = nowTime.ToString();
+            Console.WriteLine(nowTime.ToString());
+            AccessorTaskList atl = new AccessorTaskList();
+            atl.InitializeJsonData();
+            AccessorOptionData aod = new AccessorOptionData();
+            aod.InitializeJsonData();
         }
     }
 
-    public class Summary
-    {
-        /// <summary>
-        /// これはフィールド！！
-        /// </summary>
-        public int field;
-    }
 }

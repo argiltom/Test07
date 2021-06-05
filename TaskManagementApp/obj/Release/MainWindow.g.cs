@@ -33,63 +33,63 @@ using TaskManagementApp;
 
 
 namespace TaskManagementApp {
-    
-    
+
+
     /// <summary>
     /// MainWindow
     /// </summary>
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
-        
-        
+
+
         #line 10 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock debugPrinter;
-        
+
         #line default
         #line hidden
-        
-        
+
+
         #line 11 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button button;
-        
+
         #line default
         #line hidden
-        
-        
+
+
         #line 13 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button button_Copy;
-        
+
         #line default
         #line hidden
-        
-        
+
+
         #line 14 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Slider slider;
-        
+
         #line default
         #line hidden
-        
-        
+
+
         #line 16 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button button1;
-        
+
         #line default
         #line hidden
-        
-        
+
+
         #line 17 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock nowTimeView;
-        
+
         #line default
         #line hidden
-        
+
         private bool _contentLoaded;
-        
+
         /// <summary>
         /// InitializeComponent
         /// </summary>
@@ -101,14 +101,14 @@ namespace TaskManagementApp {
             }
             _contentLoaded = true;
             System.Uri resourceLocater = new System.Uri("/TaskManagementApp;component/mainwindow.xaml", System.UriKind.Relative);
-            
+
             #line 1 "..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
-            
+
             #line default
             #line hidden
         }
-        
+
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
@@ -129,10 +129,10 @@ namespace TaskManagementApp {
             return;
             case 4:
             this.slider = ((System.Windows.Controls.Slider)(target));
-            
+
             #line 14 "..\..\MainWindow.xaml"
             this.slider.ValueChanged += new System.Windows.RoutedPropertyChangedEventHandler<double>(this.slider_ValueChanged);
-            
+
             #line default
             #line hidden
             return;
@@ -147,4 +147,3 @@ namespace TaskManagementApp {
         }
     }
 }
-
