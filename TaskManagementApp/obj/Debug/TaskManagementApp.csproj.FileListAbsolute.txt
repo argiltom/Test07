@@ -12,7 +12,6 @@ E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.GenerateR
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.CoreCompileInputs.cache
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.exe
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.pdb
-E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.AssemblyReference.cache
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\bin\Debug\TaskManagementApp.exe.config
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\bin\Debug\TaskManagementApp.exe
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\bin\Debug\TaskManagementApp.pdb
@@ -30,3 +29,6 @@ C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\obj\Debug\Task
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.CoreCompileInputs.cache
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\obj\Debug\TaskManagementApp.exe
 C:\Users\peipei\Documents\GitHub\koudoInfo1B-07\TaskManagementApp\obj\Debug\TaskManagementApp.pdb
+E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csprojAssemblyReference.cache
+E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskAdd.g.cs
+E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskAdd.baml
