@@ -32,7 +32,7 @@ namespace TaskManagementApp
             }
             else //jsonファイルが存在しないなら
             {
-                Option defaultOption = new Option() { sortOption = SortOption.limit,isNoticeActivated=true,noticeColor=new Color(255,0,0) };
+                Option defaultOption = new Option() { sortOption = SortOption.limit, isNoticeActivated = true, noticeColor = new Color(255, 0, 0).ToString() };
                 string tempJsonString = JsonSerializer.Serialize<Option>(defaultOption);
                 System.IO.File.WriteAllText(filePath, tempJsonString);//新しくjsonファイルを生成
                 InitializeJsonData();//再度読み直す　そういう意図での再帰呼び出し
