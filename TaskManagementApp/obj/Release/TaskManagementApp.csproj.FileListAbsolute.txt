@@ -1,0 +1,15 @@
+E:\develop\kodo1B\TaskManagementApp\bin\Release\TaskManagementApp.exe.config
+E:\develop\kodo1B\TaskManagementApp\bin\Release\TaskManagementApp.exe
+E:\develop\kodo1B\TaskManagementApp\bin\Release\TaskManagementApp.pdb
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.csprojAssemblyReference.cache
+E:\develop\kodo1B\TaskManagementApp\obj\Release\MainWindow.g.cs
+E:\develop\kodo1B\TaskManagementApp\obj\Release\App.g.cs
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp_MarkupCompile.cache
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp_MarkupCompile.lref
+E:\develop\kodo1B\TaskManagementApp\obj\Release\MainWindow.baml
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.g.resources
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.Properties.Resources.resources
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.csproj.GenerateResource.cache
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.csproj.CoreCompileInputs.cache
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.exe
+E:\develop\kodo1B\TaskManagementApp\obj\Release\TaskManagementApp.pdb
