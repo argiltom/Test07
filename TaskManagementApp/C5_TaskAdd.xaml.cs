@@ -15,15 +15,16 @@ using System.Windows.Shapes;
 namespace TaskManagementApp
 {
     /// <summary>
-    /// TaskEdit.xaml の相互作用ロジック
+    /// TaskAdd.xaml の相互作用ロジック
     /// </summary>
-    public partial class TaskEdit : Window
+    public partial class C5_TaskAdd : Window
     {
-        public TaskEdit()
+        public C5_TaskAdd()
         {
             InitializeComponent();
-            this.DataContext = new PriorityList();
+            this.DataContext = new C5_PriorityList();
         }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

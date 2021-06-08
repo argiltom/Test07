@@ -24,4 +24,5 @@
         <Button Content="タスクの追加" FontSize="18" HorizontalAlignment="Left" Margin="210.667,343,0,0" VerticalAlignment="Top" Width="119" Height="52" Grid.Column="1"/>
 
     </Grid>
+    
 </Window>
