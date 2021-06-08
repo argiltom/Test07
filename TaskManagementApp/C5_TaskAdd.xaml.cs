@@ -35,24 +35,24 @@ namespace TaskManagementApp
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.summary = taskSummary.Text;
+            this.summary = addSummary.Text;
         }
         private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.info = taskInfo.Text;
+            this.info = addInfo.Text;
         }
 
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.priority = taskPriority.SelectedValue.ToString();
+            this.priority = addPriority.SelectedValue.ToString();
         }
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.deadline = taskDeadline.SelectedDate.Value;
+            this.deadline = addDeadline.SelectedDate.Value;
         }
 
-        private void Add_Click(object sender, SelectionChangedEventArgs e)
+        private void addTask_Click(object sender, SelectionChangedEventArgs e)
         {
         }
     }

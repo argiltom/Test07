@@ -17,21 +17,42 @@ namespace TaskManagementApp
     /// <summary>
     /// TaskEdit.xaml の相互作用ロジック
     /// </summary>
-    public partial class TaskEdit : Window
+    public partial class C5_TaskEdit : Window
     {
-        public TaskEdit()
+        string summary = "";
+        string info = "";
+        string priority = "0";
+        DateTime deadline = DateTime.Now;
+        public C5_TaskEdit()
         {
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
+            AccessorTaskList atl = new AccessorTaskList();
+            atl.InitializeJsonData();
+            AccessorOptionData aod = new AccessorOptionData();
+            aod.InitializeJsonData();
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            this.summary = editSummary.Text;
+        }
+        private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.info = editInfo.Text;
         }
 
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.priority = editPriority.SelectedValue.ToString();
+        }
 
+        private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.deadline = editDeadline.SelectedDate.Value;
+        }
+
+        private void editTask_Click(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }
