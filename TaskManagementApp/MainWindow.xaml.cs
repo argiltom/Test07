@@ -29,6 +29,11 @@ namespace TaskManagementApp
         ///<para>利用範囲:システム全体</para>
         /// </summary>
         public DateTime nowTime=DateTime.Now;
+
+        /// <summary>
+        /// デバッグ用、リリース時には消す
+        /// </summary>
+        TaskView taskview;
         public MainWindow()
         {
 
@@ -39,10 +44,10 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
-            TaskView taskview = new TaskView(taskViewGrid);
+            taskview = new TaskView(taskViewGrid);
 
             atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
-            taskview.UpdateDataGrid(tasks);
+            
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,6 +65,8 @@ namespace TaskManagementApp
             List<Task> taskNameList = AccessorTaskList.taskList;
             List<Task> taskSerchResult = new List<Task>();
 
+            if (taskNameList == null) return;
+
             foreach (Task task in taskNameList) 
             {
                 string taskName = serchTextBox.Text;
@@ -69,7 +76,7 @@ namespace TaskManagementApp
                         taskSerchResult.Add(task);
                     }
             }
-
+            taskview.UpdateDataGrid(taskSerchResult);
         }
     }
 
