@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
+/// <summary>
+/// 試験用スクリプト
+/// </summary>
 namespace TaskManagementApp
 {
     /// <summary>
