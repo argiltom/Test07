@@ -19,15 +19,15 @@ namespace TaskManagementApp
         /// コンストラクタにはDataGrid型を渡す
         /// </summary>
         /// <param name="getDataGrid"></param>
-        public TaskView(DataGrid getDataGrid)
+        public TaskView(DataGrid getDataGrid,List<Task> tasks)
         {
             dataGrid = getDataGrid;
-            UpdateDataGrid();
+            UpdateDataGrid(tasks);
         }
-        public void UpdateDataGrid()
+        public void UpdateDataGrid(List<Task> tasks)
         {
             ObservableCollection<Task> oc = new ObservableCollection<Task>();
-            foreach(Task task in AccessorTaskList.taskList)
+            foreach(Task task in tasks)
             {
                 oc.Add(task);
             }

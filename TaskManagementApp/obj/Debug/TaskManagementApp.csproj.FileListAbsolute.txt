@@ -12,7 +12,6 @@ E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.GenerateR
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.CoreCompileInputs.cache
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.exe
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.pdb
-E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csprojAssemblyReference.cache
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\System.Buffers.dll
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\System.Memory.dll
@@ -32,3 +31,4 @@ E:\develop\kodo1B\TaskManagementApp\bin\Debug\System.Text.Json.xml
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\develop\kodo1B\TaskManagementApp\bin\Debug\System.ValueTuple.xml
 E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.CopyComplete
+E:\develop\kodo1B\TaskManagementApp\obj\Debug\TaskManagementApp.csproj.AssemblyReference.cache

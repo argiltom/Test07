@@ -42,11 +42,33 @@ namespace TaskManagementApp
             TaskView taskview = new TaskView(taskViewGrid);
 
             atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
-            taskview.UpdateDataGrid();
+            taskview.UpdateDataGrid(tasks);
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void serchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<Task> taskNameList = AccessorTaskList.taskList;
+            List<Task> taskSerchResult = new List<Task>();
+
+            foreach (Task task in taskNameList) 
+            {
+                string taskName = serchTextBox.Text;
+
+                    if (task.taskSummary.Contains(taskName))
+                    {
+                        taskSerchResult.Add(task);
+                    }
+            }
 
         }
     }
