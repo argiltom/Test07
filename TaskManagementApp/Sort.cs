@@ -30,23 +30,30 @@ namespace TaskManagementApp
       /// </summary>
       public static List<Task> SortLimit(List<Task> tasks)
         {
-            for (int i=1,i<tasks.Count() -1 ,i++)
-            {
-                for (int k=0,k<tasks.Count() -i -1,k++)
-                {
-                    if ()
-                    {
 
-                    }
+            for (int i=0; i<tasks.Count() -1; i++) 
+            {
+                for (int k=0; k<tasks.Count() -i -1; k++)
+                {
+                    DateTime time = DateTime.Parse(tasks[k].taskLimit);
+                    DateTime nextTime = DateTime.Parse(tasks[k+1].taskLimit);
+                    //nextTime の方がより過去の時刻の場合
+                    if (time>nextTime)
+                    {
+                        Task temp = tasks[k];
+                        tasks[k] = tasks[k + 1];
+                        tasks[k + 1] = temp;
+                    }   
                 }
             }
+            return tasks;
       }
       /// <summary>
       ///   重要度順に並び変える
       /// </summary>
       public static List<Task> SortImportance(List<Task> tasks)
-        {
-        
+      {
+            return tasks;
       }
     }
 }
