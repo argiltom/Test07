@@ -43,6 +43,11 @@ namespace TaskManagementApp
 
             atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
             taskview.UpdateDataGrid();
+            foreach(Task task in AccessorTaskList.taskList)
+            {
+                SPtaskView.Children.Add(new C2_TaskViewUnit(task));
+            }
+            
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

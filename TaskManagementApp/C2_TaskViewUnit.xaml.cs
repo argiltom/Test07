@@ -55,9 +55,38 @@ namespace TaskManagementApp
             set { SetValue(BtnTaskComplishedProperty, value); }
         }
 
-        public C2_TaskViewUnit()
+        /// <summary>
+        /// xamlのTaskLimitTextと連携(依存関係プロパティ)
+        /// </summary>
+        public static readonly DependencyProperty TaskLimitTextProperty =
+            DependencyProperty.Register(
+                    "TaskLimitText",
+                    typeof(string),
+                    typeof(C2_TaskViewUnit),//このプロパティを所有する型=このクラス名
+                    new PropertyMetadata("summary")//初期値
+                );
+        /// <summary>
+        /// TaskLimitTextへのアクセサー
+        /// </summary>
+        public string TaskLimitText
+        {
+            get
+            {
+                return (string)GetValue(TaskLimitTextProperty);
+            }
+            set
+            {
+                SetValue(TaskLimitTextProperty, value);
+            }
+        }
+
+
+
+        public C2_TaskViewUnit(Task task)
         {
             InitializeComponent();
+            SummaryText = task.taskSummary;
+            TaskLimitText = task.taskLimit;
             
         }
     }

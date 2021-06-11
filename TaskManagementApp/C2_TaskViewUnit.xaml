@@ -12,7 +12,6 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="105,10,0,0" Height="78" Width="625"><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="880"/>
         <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="735,10,0,0" Height="135"/>
-        <TextBlock x:Name="dateText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="406,67,0,0" Height="78" Width="319"><Run Text="TextBlock"/></TextBlock>
-
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="406,67,0,0" Height="78" Width="319"><Run Text="{Binding TaskLimitText,ElementName=TaskViewUnit}"/></TextBlock>
     </Grid>
 </UserControl>
