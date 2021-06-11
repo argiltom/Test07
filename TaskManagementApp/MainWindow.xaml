@@ -15,5 +15,6 @@
         <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="120" TextWrapping="Wrap" Text="検索画面" VerticalAlignment="Top" Width="630" Margin="208,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36"/>
         <Button x:Name="addTaskButton" Content="タスク追加" HorizontalAlignment="Left" Height="135" Margin="66,131,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.135,0.296"/>
         <DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="826" Margin="114,326,0,0" IsReadOnly="True"/>
+        <!--<local:C2_TaskViewUnit></local:C2_TaskViewUnit>-->
     </Grid>
 </Window>

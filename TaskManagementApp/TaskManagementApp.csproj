@@ -84,9 +84,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
+    <Compile Include="C2_TaskViewUnit.xaml.cs">
+      <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TaskView.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Task.cs" />
+    <Page Include="C2_TaskViewUnit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
