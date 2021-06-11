@@ -87,6 +87,7 @@
     <Compile Include="C2_TaskViewUnit.xaml.cs">
       <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TaskViewStackPanelController.cs" />
     <Compile Include="TaskView.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Task.cs" />

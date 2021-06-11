@@ -12,6 +12,7 @@ using System.Windows.Controls;
 namespace TaskManagementApp
 {
     /// <summary>
+    /// このクラスはそろそろお蔵入り
     /// <para>C3:ホーム画面表示</para>
     /// <para>M2-1　タスクリスト表示</para>
     /// </summary>
@@ -19,7 +20,7 @@ namespace TaskManagementApp
     {
         DataGrid dataGrid;
         /// <summary>
-        /// コンストラクタにはDataGrid型を渡す
+        /// コンストラクタにはDataGrid型を渡す 
         /// </summary>
         /// <param name="getDataGrid"></param>
         public TaskView(DataGrid getDataGrid)
