@@ -12,14 +12,14 @@
             <ColumnDefinition Width="453*"/>
             <ColumnDefinition Width="340*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="addCancel" Content="Button" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1"/>
+        <Button x:Name="addCancel" Content="キャンセル" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="  タスク追加画面" FontSize="30" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="タスク概要" FontSize="20" VerticalAlignment="Top"/>
         <TextBox x:Name="addSummary" HorizontalAlignment="Left" Height="51" Margin="10,76,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="706" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,132,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top"><Run Text="タスク"/><Run Text="詳細"/></TextBlock>
         <TextBox x:Name="addInfo" HorizontalAlignment="Left" Height="94" Margin="0,159,0,0" TextWrapping="Wrap" Text="" FontSize="20" VerticalAlignment="Top" Width="706" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="タスク重要度" FontSize="18" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="addPriority" SelectedValuePath="content" SelectionChanged="combobox_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="addPriority" SelectedValuePath="Content" SelectionChanged="combobox_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="タスク期限" FontSize="18" VerticalAlignment="Top"/>
         <DatePicker x:Name="addLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}" />
         <Button  x:Name="addTask" Content="タスクの追加" FontSize="18" HorizontalAlignment="Left" Margin="210.667,343,0,0" VerticalAlignment="Top" Width="119" Height="52" Grid.Column="1"/>
