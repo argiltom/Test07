@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:TaskManagementApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="1024" Width="1280">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="ImageSource1" UriSource="./Resources/taskaddbutton.png" />
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="431*"/>
@@ -16,7 +21,10 @@
         <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,10,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="71" Width="337" Foreground="#FF020000" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
         <Button x:Name="notificateButton" Content="通知ON_OFF" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20"/>
         <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="120" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="775" Margin="211,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5" TextChanged="serchTextBox_TextChanged"/>
-        <Button x:Name="addTaskButton" Content="タスク追加" HorizontalAlignment="Left" Height="141" Margin="88,110,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.135,0.296" Click="addTaskButton_Click" FontSize="20"/>
+   
+            <Button x:Name="addTaskButton" Content="タスク追加" HorizontalAlignment="Left" Height="141" Margin="88,110,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.135,0.296" Click="addTaskButton_Click" FontSize="20"/>
+
+                    <Image x:Name="image01" Source="./Resources/TaskAddButton.png" VerticalAlignment="Center" Margin="10,10,-10,-10" />
 
         <DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="775" Margin="211,275,0,0" IsReadOnly="True" Grid.RowSpan="2"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272"/>
