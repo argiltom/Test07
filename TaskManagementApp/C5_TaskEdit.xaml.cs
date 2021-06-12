@@ -47,6 +47,7 @@ namespace TaskManagementApp
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.priority = editPriority.SelectedValue.ToString();
+
         }
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)

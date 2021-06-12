@@ -17,11 +17,24 @@ namespace TaskManagementApp
     /// <summary>
     /// Cancel.xaml の相互作用ロジック
     /// </summary>
-    public partial class Cancel : Window
+    public partial class C5_Cancel : Window
     {
-        public Cancel()
+        C5_TaskAdd ta;
+        public C5_Cancel(C5_TaskAdd ta)
         {
             InitializeComponent();
+            this.ta = ta;
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            ta.Close();
+        }
+
+        private void No_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
         }
     }
 }

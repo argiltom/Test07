@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +24,14 @@ namespace TaskManagementApp
         string info = "";
         string priority = "0";
         DateTime limit = DateTime.Now;
+        C5_Cancel cancel;
+        C5_TaskFileProcess tfp;
         public C5_TaskAdd()
         {
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
-            AccessorTaskList atl = new AccessorTaskList();
-            atl.InitializeJsonData();
-            AccessorOptionData aod = new AccessorOptionData();
-            aod.InitializeJsonData();
+            cancel = new C5_Cancel(this);
+            tfp = new C5_TaskFileProcess(this);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -45,6 +46,7 @@ namespace TaskManagementApp
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.priority = addPriority.SelectedValue.ToString();
+            Debug.WriteLine(this.priority);
         }
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
@@ -52,8 +54,15 @@ namespace TaskManagementApp
             this.limit = addLimit.SelectedDate.Value;
         }
 
-        private void addTask_Click(object sender, SelectionChangedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            cancel.Show();
+        }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), limit.ToString());
+            Close();
         }
     }
 }
