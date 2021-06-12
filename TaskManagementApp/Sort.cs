@@ -53,7 +53,23 @@ namespace TaskManagementApp
       /// </summary>
       public static List<Task> SortImportance(List<Task> tasks)
       {
+
+            for (int i = 0; i < tasks.Count() - 1; i++)
+            {
+                for (int k = 0; k < tasks.Count() - i - 1; k++)
+                {
+                    int importance =   tasks[k].taskPriority;
+                    int nextImportance =  tasks[k + 1].taskPriority;
+                    //nextImportance の方がより重要度が低い場合
+                    if (importance > nextImportance)
+                    {
+                        Task temp = tasks[k];
+                        tasks[k] = tasks[k + 1];
+                        tasks[k + 1] = temp;
+                    }
+                }
+            }
             return tasks;
-      }
+        }
     }
 }
