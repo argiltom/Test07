@@ -38,5 +38,16 @@ namespace TaskManagementApp
             dataGrid.ItemsSource = oc;
  
         }
+
+        public void UpdateDataGrid(List<Task> tasks)
+        {
+            ObservableCollection<Task> oc = new ObservableCollection<Task>();
+            foreach (Task task in tasks)
+            {
+                oc.Add(task);
+            }
+            dataGrid.ItemsSource = oc;
+
+        }
     }
 }
