@@ -66,7 +66,7 @@ namespace TaskManagementApp
                     int importance =   tasks[k].taskPriority;
                     int nextImportance =  tasks[k + 1].taskPriority;
                     //nextImportance の方がより重要度が低い場合
-                    if (importance > nextImportance)
+                    if (importance < nextImportance)
                     {
                         Task temp = tasks[k];
                         tasks[k] = tasks[k + 1];
