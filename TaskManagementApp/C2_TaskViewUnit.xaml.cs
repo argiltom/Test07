@@ -80,6 +80,31 @@ namespace TaskManagementApp
             }
         }
 
+        /// <summary>
+        /// xamlのTaskImportanceTextと連携(依存関係プロパティ)
+        /// </summary>
+        public static readonly DependencyProperty TaskImportanceTextProperty =
+            DependencyProperty.Register(
+                    "TaskImportanceText",
+                    typeof(string),
+                    typeof(C2_TaskViewUnit),//このプロパティを所有する型=このクラス名
+                    new PropertyMetadata("null")//初期値
+                );
+        /// <summary>
+        /// TaskImportanceTextへのアクセサー
+        /// </summary>
+        public string TaskImportanceText
+        {
+            get
+            {
+                return (string)GetValue(TaskImportanceTextProperty);
+            }
+            set
+            {
+                SetValue(TaskImportanceTextProperty, value);
+            }
+        }
+
 
 
         public C2_TaskViewUnit(Task task)
@@ -87,7 +112,7 @@ namespace TaskManagementApp
             InitializeComponent();
             SummaryText = task.taskSummary;
             TaskLimitText ="期限："+task.taskLimit;
-            
+            TaskImportanceText = "重要度:" +task.taskPriority;
         }
     }
 }
