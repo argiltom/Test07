@@ -41,8 +41,8 @@ namespace TaskManagementApp
             aod.InitializeJsonData();
             TaskView taskview = new TaskView(taskViewGrid);
 
-            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
-            taskview.UpdateDataGrid();
+            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "NULL", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
+            taskview.UpdateDataGrid(Sort.SortLimit(AccessorTaskList.taskList));
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
