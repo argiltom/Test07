@@ -45,7 +45,7 @@ namespace TaskManagementApp
             
             
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, AccessorTaskList.taskList);
-
+            
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

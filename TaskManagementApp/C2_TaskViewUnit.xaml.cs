@@ -86,7 +86,7 @@ namespace TaskManagementApp
         {
             InitializeComponent();
             SummaryText = task.taskSummary;
-            TaskLimitText = task.taskLimit;
+            TaskLimitText ="期限："+task.taskLimit;
             
         }
     }
