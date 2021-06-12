@@ -39,10 +39,8 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
-            TaskView taskview = new TaskView(taskViewGrid);
-
-            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "NULL", taskSummary = "ASTESIA", taskPriority = 2, taskLimit = DateTime.Now.ToString() });
-            taskview.UpdateDataGrid(Sort.SortImportance(AccessorTaskList.taskList));
+            //TaskView taskview = new TaskView(taskViewGrid);
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, AccessorTaskList.taskList);
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

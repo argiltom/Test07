@@ -5,13 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskManagementApp"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="880">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="135" Margin="0,10,0,0" RenderTransformOrigin="0.529,1.284"/>
-        <TextBlock x:Name="summaryText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="105,10,0,0" Height="78" Width="625"><Run Text="TextBlock"/></TextBlock>
+             d:DesignHeight="160" d:DesignWidth="880"
+             x:Name="TaskViewUnit">
+    <!--このXaml自体にTaskViewUnitという名前をつけた-->
+    <Grid Background="#ffffff">
+        <Button  Content="完了" Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="135" Margin="10,10,0,0" RenderTransformOrigin="0.529,1.284"/>
+        <TextBlock FontSize="50" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,10,0,0" Height="78" Width="620"><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="880"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="735,10,0,0" Height="135"/>
-        <TextBlock x:Name="dateText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="406,67,0,0" Height="78" Width="319"><Run Text="TextBlock"/></TextBlock>
-
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="735,10,0,0" Height="135"/>
+        <TextBlock FontSize="36" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="119,93,0,0" Height="52" Width="606"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
     </Grid>
 </UserControl>
