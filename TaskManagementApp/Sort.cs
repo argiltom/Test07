@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
+    /// <summary>
+    /// C4  Sort
+    /// </summary>
    public class Sort
     {
         /// <summary>
@@ -27,6 +30,7 @@ namespace TaskManagementApp
         }
       /// <summary>
       ///   期限順に並び変える
+      ///   バブルソート利用
       /// </summary>
       public static List<Task> SortLimit(List<Task> tasks)
         {
@@ -48,10 +52,11 @@ namespace TaskManagementApp
             }
             return tasks;
       }
-      /// <summary>
-      ///   重要度順に並び変える
-      /// </summary>
-      public static List<Task> SortImportance(List<Task> tasks)
+        /// <summary>
+        ///   重要度順に並び変える
+        ///   バブルソート利用
+        /// </summary>
+        public static List<Task> SortImportance(List<Task> tasks)
       {
 
             for (int i = 0; i < tasks.Count() - 1; i++)
