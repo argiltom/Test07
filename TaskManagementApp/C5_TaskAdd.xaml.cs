@@ -22,7 +22,7 @@ namespace TaskManagementApp
         string summary = "";
         string info = "";
         string priority = "0";
-        DateTime deadline = DateTime.Now;
+        DateTime limit = DateTime.Now;
         public C5_TaskAdd()
         {
             InitializeComponent();
@@ -49,7 +49,7 @@ namespace TaskManagementApp
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.deadline = addDeadline.SelectedDate.Value;
+            this.limit = addLimit.SelectedDate.Value;
         }
 
         private void addTask_Click(object sender, SelectionChangedEventArgs e)

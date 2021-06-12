@@ -49,6 +49,12 @@ namespace TaskManagementApp
         {
 
         }
+
+        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            C5_TaskAdd ta = new C5_TaskAdd();
+            ta.Show();
+        }
     }
 
 }

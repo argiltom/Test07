@@ -22,7 +22,7 @@ namespace TaskManagementApp
         string summary = "";
         string info = "";
         string priority = "0";
-        DateTime deadline = DateTime.Now;
+        DateTime limit = DateTime.Now;
         public C5_TaskEdit()
         {
             InitializeComponent();
@@ -31,6 +31,9 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
+            editSummary.Text = this.summary;
+            editInfo.Text = this.info;
+            editPriority.Text = this.priority;
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -48,7 +51,7 @@ namespace TaskManagementApp
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.deadline = editDeadline.SelectedDate.Value;
+            this.limit = editLimit.SelectedDate.Value;
         }
 
         private void editTask_Click(object sender, SelectionChangedEventArgs e)
