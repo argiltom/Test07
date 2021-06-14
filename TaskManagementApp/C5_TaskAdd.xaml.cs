@@ -31,12 +31,13 @@ namespace TaskManagementApp
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
             cancel = new C5_Cancel(this);
-            tfp = new C5_TaskFileProcess(this);
+            tfp = new C5_TaskFileProcess();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.summary = addSummary.Text;
+            Debug.WriteLine(addSummary.Text);
         }
         private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -52,6 +53,7 @@ namespace TaskManagementApp
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
         {
             this.limit = addLimit.SelectedDate.Value;
+            Debug.WriteLine(this.limit);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -61,7 +63,13 @@ namespace TaskManagementApp
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
         {
-            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), limit.ToString());
+            this.summary = addSummary.Text;
+            this.info = addInfo.Text;
+            this.limit = addLimit.SelectedDate.Value;
+            Debug.WriteLine(this.limit);
+            Debug.WriteLine(this.summary);
+            Debug.WriteLine(this.info);
+            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), this.limit.ToString());
             Close();
         }
     }

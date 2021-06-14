@@ -23,6 +23,8 @@ namespace TaskManagementApp
         string info = "";
         string priority = "0";
         DateTime limit = DateTime.Now;
+        C5_Cancel cancel;
+        C5_TaskFileProcess tfp;
         public C5_TaskEdit()
         {
             InitializeComponent();
@@ -31,9 +33,12 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
+            cancel = new C5_Cancel(this);
+            tfp = new C5_TaskFileProcess();
             editSummary.Text = this.summary;
             editInfo.Text = this.info;
             editPriority.Text = this.priority;
+            editLimit.SelectedDate = this.limit;
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -57,6 +62,21 @@ namespace TaskManagementApp
 
         private void editTask_Click(object sender, SelectionChangedEventArgs e)
         {
+        }
+
+        private void editCancel_Click(object sender, RoutedEventArgs e)
+        {
+            cancel.Show();
+        }
+
+        private void editTask_Click(object sender, RoutedEventArgs e)
+        {
+            this.summary = editSummary.Text;
+            this.info = editInfo.Text;
+            this.priority = editPriority.SelectedValue.ToString();
+            this.limit = editLimit.SelectedDate.Value;
+            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), this.limit.ToString());
+            Close();
         }
     }
 }

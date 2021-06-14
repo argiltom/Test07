@@ -45,15 +45,15 @@ namespace TaskManagementApp
             taskview.UpdateDataGrid();
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void addTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
             ta.Show();
+        }
+
+        private void editTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

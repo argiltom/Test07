@@ -8,11 +8,9 @@ namespace TaskManagementApp
 {
     public class C5_TaskFileProcess
     {
-        C5_TaskAdd ta;
         AccessorTaskList atl;
-        public C5_TaskFileProcess(C5_TaskAdd ta)
+        public C5_TaskFileProcess()
         {
-            this.ta = ta;
             atl = new AccessorTaskList();
             atl.InitializeJsonData();
 
