@@ -59,7 +59,38 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
-
+    <Compile Include="C2_TaskViewUnit.xaml.cs">
+      <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_Cancel.xaml.cs">
+      <DependentUpon>C5_Cancel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_PriorityList.cs" />
+    <Compile Include="C5_TaskAdd.xaml.cs">
+      <DependentUpon>C5_TaskAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_TaskEdit.xaml.cs">
+      <DependentUpon>C5_TaskEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_TaskFileProcess.cs" />
+    <Compile Include="TaskViewStackPanelController.cs" />
+    <Compile Include="Sort.cs" />
+    <Compile Include="TaskView.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="Task.cs" />
+    <Page Include="C2_TaskViewUnit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_Cancel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_TaskAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_TaskEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -76,7 +107,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -96,7 +126,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-
+    <None Include="F2_OptionData\optionData.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="F1_TaskData\" />
-
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">

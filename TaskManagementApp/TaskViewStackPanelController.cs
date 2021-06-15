@@ -8,7 +8,7 @@ using System.Windows.Controls;
 namespace TaskManagementApp
 {
     /// <summary>
-    /// <para>C3:ホーム画面表示</para>
+    /// <para>C2:ホーム画面表示</para>
     /// <para>M2-1　タスクリスト表示</para>
     /// C2_TaskのStackPanel制御を行うクラス 
     /// </summary>

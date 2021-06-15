@@ -31,7 +31,6 @@ namespace TaskManagementApp
         public DateTime nowTime=DateTime.Now;
         public MainWindow()
         {
-
             InitializeComponent();
             nowTimeView.Text = nowTime.ToString();
             Console.WriteLine(nowTime.ToString());
@@ -41,12 +40,14 @@ namespace TaskManagementApp
             aod.InitializeJsonData();
             //TaskView taskview = new TaskView(taskViewGrid);
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
+            Console.WriteLine("mainWindow稼働中");
         }
 
         private void addTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
             ta.Show();
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
         }
 
         private void editTaskButton_Click(object sender, RoutedEventArgs e)
