@@ -22,7 +22,7 @@ namespace TaskManagementApp
     {
         string summary = "";
         string info = "";
-        string priority = "0";
+        int priority = 1;
         DateTime limit = DateTime.Now;
         C5_Cancel cancel;
         C5_TaskFileProcess tfp;
@@ -32,29 +32,9 @@ namespace TaskManagementApp
             this.DataContext = new C5_PriorityList();
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
+            addPriority.SelectedIndex = this.priority;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.summary = addSummary.Text;
-            Debug.WriteLine(addSummary.Text);
-        }
-        private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.info = addInfo.Text;
-        }
-
-        private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.priority = addPriority.SelectedValue.ToString();
-            Debug.WriteLine(this.priority);
-        }
-
-        private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.limit = addLimit.SelectedDate.Value;
-            Debug.WriteLine(this.limit);
-        }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -65,11 +45,13 @@ namespace TaskManagementApp
         {
             this.summary = addSummary.Text;
             this.info = addInfo.Text;
+            this.priority = addPriority.SelectedIndex;
             this.limit = addLimit.SelectedDate.Value;
             Debug.WriteLine(this.limit);
             Debug.WriteLine(this.summary);
+            Debug.WriteLine(this.priority);
             Debug.WriteLine(this.info);
-            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), this.limit.ToString());
+            tfp.TaskSend(this.summary, this.info, this.priority, this.limit.ToString());
             Close();
         }
     }
