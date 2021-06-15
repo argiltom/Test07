@@ -12,7 +12,6 @@ namespace TaskManagementApp
         public C5_TaskFileProcess()
         {
             atl = new AccessorTaskList();
-            atl.InitializeJsonData();
 
         }
         public void TaskSend(string summary, string info, int priority, string limit)

@@ -30,9 +30,7 @@ namespace TaskManagementApp
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
             AccessorTaskList atl = new AccessorTaskList();
-            atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
-            aod.InitializeJsonData();
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
             this.summary = summary;
@@ -43,28 +41,6 @@ namespace TaskManagementApp
             editInfo.Text = this.info;
             editPriority.Text = this.priority;
             editLimit.SelectedDate = this.limit;
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.summary = editSummary.Text;
-        }
-        private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.info = editInfo.Text;
-        }
-
-        private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.priority = editPriority.SelectedValue.ToString();
-        }
-
-        private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.limit = editLimit.SelectedDate.Value;
-        }
-
-        private void editTask_Click(object sender, SelectionChangedEventArgs e)
-        {
         }
 
         private void editCancel_Click(object sender, RoutedEventArgs e)
