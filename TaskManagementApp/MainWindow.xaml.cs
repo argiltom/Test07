@@ -39,10 +39,8 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
-            TaskView taskview = new TaskView(taskViewGrid);
-
-            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
-            taskview.UpdateDataGrid();
+            //TaskView taskview = new TaskView(taskViewGrid);
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
         }
 
         private void addTaskButton_Click(object sender, RoutedEventArgs e)
