@@ -47,6 +47,7 @@ namespace TaskManagementApp
         {
             C5_TaskAdd ta = new C5_TaskAdd();
             ta.Show();
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
         }
 
         private void editTaskButton_Click(object sender, RoutedEventArgs e)

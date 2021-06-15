@@ -30,9 +30,7 @@ namespace TaskManagementApp
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
             AccessorTaskList atl = new AccessorTaskList();
-            atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
-            aod.InitializeJsonData();
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
             this.summary = summary;
