@@ -19,13 +19,13 @@ namespace TaskManagementApp
     /// </summary>
     public partial class C5_TaskEdit : Window
     {
-        string summary = "";
-        string info = "";
-        string priority = "0";
-        DateTime limit = DateTime.Now;
+        string summary;
+        string info;
+        string priority;
+        DateTime limit;
         C5_Cancel cancel;
         C5_TaskFileProcess tfp;
-        public C5_TaskEdit()
+        public C5_TaskEdit(string summary, string info, string priority, DateTime limit)
         {
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
@@ -35,6 +35,10 @@ namespace TaskManagementApp
             aod.InitializeJsonData();
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
+            this.summary = summary;
+            this.info = info;
+            this.priority = priority;
+            this.limit = limit;
             editSummary.Text = this.summary;
             editInfo.Text = this.info;
             editPriority.Text = this.priority;
@@ -52,7 +56,6 @@ namespace TaskManagementApp
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.priority = editPriority.SelectedValue.ToString();
-
         }
 
         private void taskDeadline_ValueChanged(object sender, SelectionChangedEventArgs e)
