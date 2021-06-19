@@ -50,4 +50,9 @@ namespace TaskManagementApp
 
         }
     }
+    /*
+     DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Tick += new EventHandler();
+     */
 }
