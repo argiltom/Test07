@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
+    /// <summary>
+    /// C3 通知
+    /// </summary>
     public class Notice
     {
         double comparedt1dt2;
