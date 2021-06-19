@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using System.Windows.Threading;
 
 namespace TaskManagementApp
 {
@@ -31,7 +31,6 @@ namespace TaskManagementApp
         public DateTime nowTime=DateTime.Now;
         public MainWindow()
         {
-
             InitializeComponent();
             nowTimeView.Text = nowTime.ToString();
             Console.WriteLine(nowTime.ToString());
@@ -40,10 +39,30 @@ namespace TaskManagementApp
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
             //TaskView taskview = new TaskView(taskViewGrid);
-            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
+            Console.WriteLine("mainWindow稼働中");
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
+            dispatcherTimer.Start();
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            C5_TaskAdd ta = new C5_TaskAdd();
+            ta.Show();
+            
+        }
+        /// <summary>
+        /// C2 MainWindowでタスク表示を常時更新させる処理
+        /// </summary>
+        private void MainWindowUpdate(object sender,EventArgs eventArgs)
+        {
+
+                TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
+                //Console.WriteLine("アタランテ");
+            
+        }
+        private void editTaskButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
