@@ -60,6 +60,7 @@ namespace TaskManagementApp
         {
             nowTime= DateTime.Now;
             nowTimeView.Text = nowTime.ToString();
+            
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
              //Console.WriteLine("アタランテ");
             
