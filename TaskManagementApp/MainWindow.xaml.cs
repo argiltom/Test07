@@ -32,8 +32,9 @@ namespace TaskManagementApp
         public MainWindow()
         {
             InitializeComponent();
-            nowTimeView.Text = nowTime.ToString();
+            
             Console.WriteLine(nowTime.ToString());
+            nowTimeView.Text = nowTime.ToString();
             AccessorTaskList atl = new AccessorTaskList();
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
@@ -57,9 +58,10 @@ namespace TaskManagementApp
         /// </summary>
         private void MainWindowUpdate(object sender,EventArgs eventArgs)
         {
-
-                TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
-                //Console.WriteLine("アタランテ");
+            nowTime= DateTime.Now;
+            nowTimeView.Text = nowTime.ToString();
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
+             //Console.WriteLine("アタランテ");
             
         }
         private void editTaskButton_Click(object sender, RoutedEventArgs e)
