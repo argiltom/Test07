@@ -21,7 +21,7 @@ namespace TaskManagementApp
         /// </summary>
         public string taskColor { set; get; }
         /// <summary>
-        /// C6 タスクの通知色設定(C2Notice側で制御) (使わないかも)
+        /// C6 タスクの通知色設定(C2Notice側で制御)
         /// </summary>
         public string taskNoticeColor { set; get; }
     }
