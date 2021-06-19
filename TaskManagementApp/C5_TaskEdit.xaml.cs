@@ -52,7 +52,7 @@ namespace TaskManagementApp
             this.info = editInfo.Text;
             this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
-            tfp.TaskSend(this.summary, this.info, this.priority, this.limit.ToString());
+            tfp.TaskSend(this.summary, this.info, this.priority + 1, this.limit.ToString());
             Close();
         }
     }
