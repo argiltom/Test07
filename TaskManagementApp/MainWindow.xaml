@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagementApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1024" Width="1280">
+        Title="MainWindow" Height="1024" Width="1280"
+        ResizeMode="NoResize">
+    <!--リサイズの禁止を行った6/23 鈴木智仁-->
     <Window.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="ImageSource1" UriSource="./Resources/taskaddbutton.png" />
@@ -99,7 +101,7 @@
         </Border>
 
 
-        <Grid Margin="38,306,352,90" Grid.RowSpan="2" >
+        <Grid Margin="38,306,320,90" Grid.RowSpan="2" >
             <Border BorderBrush="#111111" BorderThickness="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="SPtaskView"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
@@ -107,13 +109,16 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Grid Margin="925,306,38,90" Grid.RowSpan="2">
-            <Border BorderBrush="#111111" BorderThickness="3">
+        <Grid Margin="950,306,10,200" Grid.RowSpan="2" >
+
+            <Border BorderBrush="#111111" BorderThickness="3" >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                 <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="296"  Grid.RowSpan="2" />
+                    <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="auto"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
         </Grid>
+        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="959,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click"/>
+
 
     </Grid>
 
