@@ -30,7 +30,9 @@ namespace TaskManagementApp
         ///<para>利用範囲:システム全体</para>
         /// </summary>
         public DateTime nowTime=DateTime.Now;
+
         DispatcherTimer dispatcherTimer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
+
             //TaskView taskview = new TaskView(taskViewGrid);
             Console.WriteLine("mainWindow稼働中");
             dispatcherTimer = new DispatcherTimer();
@@ -85,6 +88,30 @@ namespace TaskManagementApp
         private void editTaskButton_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void serchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<Task> taskNameList = AccessorTaskList.taskList;
+            List<Task> taskSerchResult = new List<Task>();
+
+            if (taskNameList == null) return;
+
+            foreach (Task task in taskNameList) 
+            {
+                string taskName = serchTextBox.Text;
+
+                    if (task.taskSummary.Contains(taskName))
+                    {
+                        taskSerchResult.Add(task);
+                    }
+            }
+            taskview.UpdateDataGrid(taskSerchResult);
         }
     }
 
