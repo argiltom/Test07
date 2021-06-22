@@ -43,12 +43,12 @@ namespace TaskManagementApp
             editLimit.SelectedDate = this.limit;
         }
 
-        private void editCancel_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             cancel.Show();
         }
 
-        private void editTask_Click(object sender, RoutedEventArgs e)
+        private void EditTask_Click(object sender, RoutedEventArgs e)
         {
             this.summary = editSummary.Text;
             this.info = editInfo.Text;
