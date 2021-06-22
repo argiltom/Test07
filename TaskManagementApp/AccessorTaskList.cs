@@ -22,6 +22,9 @@ namespace TaskManagementApp
         /// </summary>
         static public List<Task> taskList;
         string filePath = System.IO.Directory.GetCurrentDirectory() + @"\..\..\F1_TaskData\taskData.json";//@特殊な文字を文字としてそのまま適用する
+        /// <summary>
+        /// このメソッドは、MainWindow.xaml.csで、始めに1回だけ呼ばれる
+        /// </summary>
         public void InitializeJsonData()
         {
             //このプロジェクトの実行exeカレントディレクトリのパスを取得
@@ -59,9 +62,22 @@ namespace TaskManagementApp
             return taskList;
             
         }
+        /// <summary>
+        /// タスクをtasklistへ追加する、その後それをjsonデータとして書き出す
+        /// </summary>
+        /// <param name="addTask"></param>
         public void AddTaskList(Task addTask)
         {
             taskList.Add(addTask);
+            WriteJsonData();
+        }
+        /// <summary>
+        /// tasklistから指定したタスクを削除する、その後それをjsonデータとして書き出す
+        /// </summary>
+        /// <param name="addTask"></param>
+        public void RemoveTaskList(Task removeTask)
+        {
+            taskList.Remove(removeTask);
             WriteJsonData();
         }
         public void ViewTaskListToCosole()

@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="431*"/>
             <RowDefinition Height="563*"/>
@@ -96,5 +97,18 @@
         </Border>
         <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="1092,147,0,0" VerticalAlignment="Top"/>
 
+
+        <Button x:Name="addTaskButton" Content="タスク追加" HorizontalAlignment="Left" Height="135" Margin="66,131,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.135,0.296" Click="addTaskButton_Click"/>
+
+        <Grid Margin="66,306,280,151" >
+            <Border BorderBrush="#111111" BorderThickness="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="SPtaskView"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
     </Grid>
+
 </Window>

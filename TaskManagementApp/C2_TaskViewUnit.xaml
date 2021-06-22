@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="TaskManagementApp.C2_TaskViewUnit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskManagementApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="880"
+             x:Name="TaskViewUnit">
+    <!--このXaml自体にTaskViewUnitという名前をつけた-->
+    <Grid Background="#ffffff">
+        
+        <TextBlock FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,10,0,0" Height="78" Width="620"><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="880"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="735,16,0,0" Height="123"/>
+        <TextBlock FontSize="36" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="119,93,0,0" Height="52" Width="342"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="552,93,86,0" Height="46" Width="242"><Run Text="{Binding TaskImportanceText,ElementName=TaskViewUnit}"/></TextBlock>
+        <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="159" StrokeThickness="4"  Stroke="{Binding TaskNoticeColor,ElementName=TaskViewUnit}" VerticalAlignment="Top" Width="878" Margin="1,0,0,0"/>
+        <Button  Content="完了" Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="compleatedTaskButton_Click"/>
+    </Grid>
+</UserControl>
