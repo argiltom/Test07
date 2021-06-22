@@ -80,6 +80,20 @@ namespace TaskManagementApp
             taskList.Remove(removeTask);
             WriteJsonData();
         }
+        /// <summary>
+        /// 引数にとったタスクリストをコピー(値渡し)して返すメソッド
+        /// </summary>
+        /// <param name="inputTasks"></param>
+        /// <returns></returns>
+        static public List<Task> CopyTaskList(List<Task> inputTasks)
+        {
+            List<Task> resultTaskList = new List<Task>();
+            foreach(Task task in inputTasks)
+            {
+                resultTaskList.Add(task);
+            }
+            return resultTaskList;
+        }
         public void ViewTaskListToCosole()
         {
             foreach(Task task in taskList)

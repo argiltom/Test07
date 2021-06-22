@@ -26,18 +26,19 @@ namespace TaskManagementApp
         public TaskView(DataGrid getDataGrid)
         {
             dataGrid = getDataGrid;
-            UpdateDataGrid();
+            UpdateDataGrid(AccessorTaskList.taskList);
         }
-        public void UpdateDataGrid()
+        /// <summary>
+        /// オーバロード
+        /// </summary>
+        /// <param name="getDataGrid"></param>
+        /// <param name="tasks"></param>
+        public TaskView(DataGrid getDataGrid,List<Task> tasks)
         {
-            ObservableCollection<Task> oc = new ObservableCollection<Task>();
-            foreach(Task task in AccessorTaskList.taskList)
-            {
-                oc.Add(task);
-            }
-            dataGrid.ItemsSource = oc;
- 
+            dataGrid = getDataGrid;
+            UpdateDataGrid(tasks);
         }
+
 
         public void UpdateDataGrid(List<Task> tasks)
         {
