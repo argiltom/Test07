@@ -78,6 +78,11 @@ namespace TaskManagementApp
             }
             taskview.UpdateDataGrid(taskSerchResult);
         }
+
+        private void notificateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
