@@ -63,9 +63,9 @@ namespace TaskManagementApp
         {
             nowTime= DateTime.Now;
             nowTimeView.Text = nowTime.ToString();
-            //Notice notice = new Notice();
+            Notice notice = new Notice();
 
-            //notice.NoticeON();
+            notice.NoticeON();
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(AccessorTaskList.taskList));
             //Console.WriteLine("アタランテ");
