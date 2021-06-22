@@ -57,7 +57,7 @@ namespace TaskManagementApp
             dispatcherTimer.Start();
         }
 
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
             ta.Show();
@@ -90,6 +90,7 @@ namespace TaskManagementApp
             dispatcherTimer.Stop();
             base.OnClosing(e);
         }
+
         private void editTaskButton_Click(object sender, RoutedEventArgs e)
         {
             
