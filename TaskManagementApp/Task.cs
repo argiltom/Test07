@@ -17,11 +17,11 @@ namespace TaskManagementApp
         public string taskLimit { set; get; }
         public int taskPriority { set; get; }
         /// <summary>
-        /// C6 タスクの色(ユーザー指定) (使わないかも)
+        /// C7 タスクの色(ユーザー指定) (使わないかも)
         /// </summary>
         public string taskColor { set; get; }
         /// <summary>
-        /// C6 タスクの通知色設定(C2Notice側で制御)
+        /// C7 タスクの通知色設定(C2Notice側で制御)
         /// </summary>
         public string taskNoticeColor { set; get; }
     }
