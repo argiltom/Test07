@@ -27,7 +27,6 @@ namespace TaskManagementApp
         /// <summary>
         /// xamlのsummaryTextと連携(依存関係プロパティ)
         /// </summary>
-        public Task task;
         public static readonly DependencyProperty SummaryTextProperty =
             DependencyProperty.Register(
                     "SummaryText",

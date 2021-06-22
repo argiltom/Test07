@@ -29,7 +29,7 @@
         <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="775" Margin="211,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5"  BorderBrush="Black"/>
 
 
-        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="131" Margin="88,110,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0,0"  FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070" Click="addTaskButton_Click">
+        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="131" Margin="88,110,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0,0"  FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070" Click="AddTaskButton_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -65,7 +65,7 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272"/>
         <Border BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Left" Height="75" Margin="211,131,0,0" VerticalAlignment="Top" Width="775">
 
-            <Button x:Name="serchButton"  Margin="701,1,1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0" Click="serchTaskButton_Click">
+            <Button x:Name="serchButton"  Margin="701,1,1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0" Click="SerchTaskButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">

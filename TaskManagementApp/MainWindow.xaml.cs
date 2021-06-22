@@ -91,11 +91,11 @@ namespace TaskManagementApp
             base.OnClosing(e);
         }
 
-        private void editTaskButton_Click(object sender, RoutedEventArgs e)
+        private void EditTaskButton_Click(object sender, RoutedEventArgs e)
         {
             
         }
-        private void serchTaskButton_Click(object sender,RoutedEventArgs e)
+        private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
         {
             taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
             Console.WriteLine("タスク検索中="+serchTextBox.Text);
