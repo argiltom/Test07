@@ -32,7 +32,10 @@ namespace TaskManagementApp
         public DateTime nowTime=DateTime.Now;
 
         DispatcherTimer dispatcherTimer;
-
+        /// <summary>
+        /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
+        /// </summary>
+        List<Task> taskSerchResult;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,17 +46,18 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
-
+            //taskSerchResultの初期化
+            taskSerchResult = AccessorTaskList.taskList;
             //TaskView taskview = new TaskView(taskViewGrid);
-            Console.WriteLine("mainWindow稼働中");
+            
             dispatcherTimer = new DispatcherTimer();
-
+            
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
             dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
             dispatcherTimer.Start();
         }
 
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
             ta.Show();
@@ -68,16 +72,17 @@ namespace TaskManagementApp
             nowTimeView.Text = nowTime.ToString();
             Notice notice = new Notice();
 
-            notice.NoticeON();
+            //notice.NoticeON();
 
-            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(AccessorTaskList.taskList));
-            //Console.WriteLine("アタランテ");
+
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
             //作りたいものが先にあって、それを実現する方法を調べて、実装する．
             //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
             //作りたいのなら、リファレンスへの理解は二の次でよい　
             //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
             //それが避けられる戦いならば沈黙を貫き
             //それが必要な戦いならば、最後まで戦い抜く
+            //Console.WriteLine("mainWindow稼働中"+serchTextBox.Text+taskSerchResult.Count());
         }
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -85,33 +90,29 @@ namespace TaskManagementApp
             dispatcherTimer.Stop();
             base.OnClosing(e);
         }
-        private void editTaskButton_Click(object sender, RoutedEventArgs e)
+
+        private void EditTaskButton_Click(object sender, RoutedEventArgs e)
         {
             
         }
-
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
         {
-
+            taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
+            Console.WriteLine("タスク検索中="+serchTextBox.Text);
         }
-
-        private void serchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        public List<Task> SerchTaskList(String serchWord,List<Task> inputTaskList)
         {
-            List<Task> taskNameList = AccessorTaskList.taskList;
-            List<Task> taskSerchResult = new List<Task>();
-
-            if (taskNameList == null) return;
-
-            foreach (Task task in taskNameList) 
+            List<Task> fullList = AccessorTaskList.CopyTaskList(inputTaskList);
+            List<Task> resultTaskList = new List<Task>();
+            foreach (Task task in fullList)
             {
-                string taskName = serchTextBox.Text;
-
-                    if (task.taskSummary.Contains(taskName))
-                    {
-                        taskSerchResult.Add(task);
-                    }
+                if (task.taskSummary.Contains(serchWord))
+                {
+                    resultTaskList.Add(task);
+                     Console.WriteLine(task.taskSummary);
+                }
             }
-            taskview.UpdateDataGrid(taskSerchResult);
+            return resultTaskList;
         }
     }
 
