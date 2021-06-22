@@ -21,7 +21,7 @@ namespace TaskManagementApp
         {//通知がONだったらM3-1(タスクのポップアップ通知)とM3-2(タスクの枠色変更)モジュールを呼ぶ
             String color = AccessorOptionData.option.noticeColor;//noticeのNoticeColor
             bool noticeSwitch = AccessorOptionData.option.isNoticeActivated;//スイッチONかどうか
-            foreach (Task temp in AccessorTaskList.taskList)
+            foreach (Task temp in AccessorTaskList.taskList)//
             {
                 DateTime dt1 = DateTime.Now;//現在時刻
                 DateTime dt2 = DateTime.Parse(temp.taskLimit);//タスクの締め切り時間
@@ -31,12 +31,12 @@ namespace TaskManagementApp
                     if (comparedt1dt2 == 3 || comparedt1dt2 == -3)//期限3日前の時
                     {
                         NoticePopUp(temp);//これで通知させたいやつだけのタスクが渡せてるのかわからん
-                        TaskColor(color);//これで通知させたいやつだけのcolorが渡せてるのかわからん
+                        TaskColor(temp);//これで通知させたいやつだけのcolorが渡せてるのかわからん
                     }
                     else if (comparedt1dt2 == -1 || comparedt1dt2 == 1)//期限1日前の時
                     {
                         NoticePopUp(temp);//上と同じ
-                        TaskColor(color);//上と同じ
+                        TaskColor(temp);//上と同じ
                     }
                     else
                     {//多分なにもしない
@@ -63,17 +63,17 @@ namespace TaskManagementApp
         /// <summary>
         /// NoticeONで呼び出されたタスクの枠色を変更する
         /// </summary>
-        public void TaskColor(String color)//タスク枠色変更　　引数に通知するタスクのオプション情報が必要かも
+        public void TaskColor(Task task)//タスク枠色変更　　引数に通知するタスクのオプション情報が必要かも
         {
             
             //NoticeONのcomparedt1dt2がほしい
             if (comparedt1dt2 == 3 || comparedt1dt2 == -3)
             {
-                color = new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
+                task.taskNoticeColor= new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
             }
             else if (comparedt1dt2 == 1 || comparedt1dt2 == -1)
             {
-                color = new Color(255, 0, 0).ToString();//タスクの枠色を赤色に変更する
+                task.taskNoticeColor = new Color(255, 0, 0).ToString();//タスクの枠色を赤色に変更する
             }
             else
             {
