@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,6 +30,7 @@ namespace TaskManagementApp
         ///<para>利用範囲:システム全体</para>
         /// </summary>
         public DateTime nowTime=DateTime.Now;
+        DispatcherTimer dispatcherTimer;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,8 +43,9 @@ namespace TaskManagementApp
             aod.InitializeJsonData();
             //TaskView taskview = new TaskView(taskViewGrid);
             Console.WriteLine("mainWindow稼働中");
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer = new DispatcherTimer();
+
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
             dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
             dispatcherTimer.Start();
         }
@@ -60,14 +63,28 @@ namespace TaskManagementApp
         {
             nowTime= DateTime.Now;
             nowTimeView.Text = nowTime.ToString();
-            
-            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.SortImportance(AccessorTaskList.taskList));
-             //Console.WriteLine("アタランテ");
-            
+            //Notice notice = new Notice();
+
+            //notice.NoticeON();
+
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(AccessorTaskList.taskList));
+            //Console.WriteLine("アタランテ");
+            //作りたいものが先にあって、それを実現する方法を調べて、実装する．
+            //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
+            //作りたいのなら、リファレンスへの理解は二の次でよい　
+            //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
+            //それが避けられる戦いならば沈黙を貫き
+            //それが必要な戦いならば、最後まで戦い抜く
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Console.WriteLine("終了処理!!!");
+            dispatcherTimer.Stop();
+            base.OnClosing(e);
         }
         private void editTaskButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 

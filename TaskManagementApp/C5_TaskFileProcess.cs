@@ -12,11 +12,17 @@ namespace TaskManagementApp
         public C5_TaskFileProcess()
         {
             atl = new AccessorTaskList();
-
         }
         public void TaskSend(string summary, string info, int priority, string limit)
         {
             atl.AddTaskList(new Task() { taskID = 2, taskInfo = info, taskSummary = summary, taskPriority = priority, taskLimit = limit });
+        }
+        public void TaskChange(Task preTask, string summary, string info, int priority, string limit)
+        {
+            List<Task> taskList = atl.GetTaskList();
+            int taskNum = taskList.IndexOf(preTask);
+            Task changedTask = new Task() { taskID = 2, taskInfo = info, taskSummary = summary, taskPriority = priority, taskLimit = limit };
+            taskList[taskNum] = changedTask;
         }
     }
 }

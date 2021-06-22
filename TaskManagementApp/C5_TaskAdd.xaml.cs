@@ -51,7 +51,7 @@ namespace TaskManagementApp
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
             Debug.WriteLine(this.info);
-            tfp.TaskSend(this.summary, this.info, this.priority, this.limit.ToString());
+            tfp.TaskSend(this.summary, this.info, this.priority + 1, this.limit.ToString());
             Close();
         }
     }

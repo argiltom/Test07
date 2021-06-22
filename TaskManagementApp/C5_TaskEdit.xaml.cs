@@ -21,25 +21,25 @@ namespace TaskManagementApp
     {
         string summary;
         string info;
-        string priority;
+        int priority;
         DateTime limit;
         C5_Cancel cancel;
         C5_TaskFileProcess tfp;
-        public C5_TaskEdit(string summary, string info, string priority, DateTime limit)
+        Task preTask;
+        public C5_TaskEdit(Task editTask)
         {
             InitializeComponent();
             this.DataContext = new C5_PriorityList();
-            AccessorTaskList atl = new AccessorTaskList();
-            AccessorOptionData aod = new AccessorOptionData();
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
-            this.summary = summary;
-            this.info = info;
-            this.priority = priority;
-            this.limit = limit;
+            this.preTask = editTask;
+            this.summary = editTask.taskSummary;
+            this.info = editTask.taskInfo;
+            this.priority = editTask.taskPriority;
+            this.limit = DateTime.Parse(editTask.taskLimit);
             editSummary.Text = this.summary;
             editInfo.Text = this.info;
-            editPriority.Text = this.priority;
+            editPriority.Text = this.priority.ToString();
             editLimit.SelectedDate = this.limit;
         }
 
@@ -52,9 +52,9 @@ namespace TaskManagementApp
         {
             this.summary = editSummary.Text;
             this.info = editInfo.Text;
-            this.priority = editPriority.SelectedValue.ToString();
+            this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
-            tfp.TaskSend(this.summary, this.info, int.Parse(this.priority), this.limit.ToString());
+            tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
             Close();
         }
     }
