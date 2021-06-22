@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -35,6 +36,7 @@ namespace TaskManagementApp
 
         private void Back(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(errorMassege);
             Close();
         }
     }
