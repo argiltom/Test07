@@ -12,7 +12,7 @@
             <ColumnDefinition Width="453*"/>
             <ColumnDefinition Width="340*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="editCancel" Content="Button" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1" Click="EditCancel_Click"/>
+        <Button x:Name="Cancel" Content="Button" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1" Click="Cancel_Click"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="  タスク編集画面" FontSize="30" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="タスク概要" FontSize="20" VerticalAlignment="Top"/>
         <TextBox x:Name="editSummary" HorizontalAlignment="Left" Height="51" Margin="10,76,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="706" Grid.ColumnSpan="2" AcceptsReturn="True"/>
@@ -22,7 +22,7 @@
         <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="editPriority"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="タスク期限" FontSize="18" VerticalAlignment="Top"/>
         <DatePicker x:Name="editLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}" />
-        <Button  x:Name="editTask" Content="編集を適応" FontSize="18" HorizontalAlignment="Left" Margin="210.667,343,0,0" VerticalAlignment="Top" Width="119" Height="52" Grid.Column="1" Click="editTask_Click"/>
+        <Button  x:Name="editTask" Content="編集を適応" FontSize="18" HorizontalAlignment="Left" Margin="210.667,343,0,0" VerticalAlignment="Top" Width="119" Height="52" Grid.Column="1" Click="EditTask_Click"/>
 
     </Grid>
 </Window>
