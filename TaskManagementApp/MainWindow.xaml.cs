@@ -65,10 +65,10 @@ namespace TaskManagementApp
             nowTimeView.Text = nowTime.ToString();
             Notice notice = new Notice();
 
-            notice.NoticeON();
+            //notice.NoticeON();
+
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(AccessorTaskList.taskList));
-            //Console.WriteLine("アタランテ");
             //作りたいものが先にあって、それを実現する方法を調べて、実装する．
             //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
             //作りたいのなら、リファレンスへの理解は二の次でよい　
