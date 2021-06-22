@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,8 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using System.Windows.Threading;
 
 namespace TaskManagementApp
 {
@@ -30,53 +31,88 @@ namespace TaskManagementApp
         /// </summary>
         public DateTime nowTime=DateTime.Now;
 
+        DispatcherTimer dispatcherTimer;
         /// <summary>
-        /// デバッグ用、リリース時には消す
+        /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
         /// </summary>
-        TaskView taskview;
+        List<Task> taskSerchResult;
         public MainWindow()
         {
-
             InitializeComponent();
-            nowTimeView.Text = nowTime.ToString();
+            
             Console.WriteLine(nowTime.ToString());
+            nowTimeView.Text = nowTime.ToString();
             AccessorTaskList atl = new AccessorTaskList();
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
-            taskview = new TaskView(taskViewGrid);
+            //taskSerchResultの初期化
+            taskSerchResult = AccessorTaskList.taskList;
+            //TaskView taskview = new TaskView(taskViewGrid);
+            
+            dispatcherTimer = new DispatcherTimer();
+            
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
+            dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
+            dispatcherTimer.Start();
+        }
 
-            atl.AddTaskList(new Task() { taskID = 2, taskInfo = "色々", taskSummary = "サマリー", taskPriority = 1, taskLimit = DateTime.Now.ToString() });
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            C5_TaskAdd ta = new C5_TaskAdd();
+            ta.Show();
             
         }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// C2 MainWindowでタスク表示を常時更新させる処理
+        /// </summary>
+        private void MainWindowUpdate(object sender,EventArgs eventArgs)
         {
+            nowTime= DateTime.Now;
+            nowTimeView.Text = nowTime.ToString();
+            Notice notice = new Notice();
 
+            //notice.NoticeON();
+
+
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
+            //作りたいものが先にあって、それを実現する方法を調べて、実装する．
+            //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
+            //作りたいのなら、リファレンスへの理解は二の次でよい　
+            //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
+            //それが避けられる戦いならば沈黙を貫き
+            //それが必要な戦いならば、最後まで戦い抜く
+            //Console.WriteLine("mainWindow稼働中"+serchTextBox.Text+taskSerchResult.Count());
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Console.WriteLine("終了処理!!!");
+            dispatcherTimer.Stop();
+            base.OnClosing(e);
         }
 
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        private void EditTaskButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
-
-        private void serchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
         {
-            List<Task> taskNameList = AccessorTaskList.taskList;
-            List<Task> taskSerchResult = new List<Task>();
-
-            if (taskNameList == null) return;
-
-            foreach (Task task in taskNameList) 
+            taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
+            Console.WriteLine("タスク検索中="+serchTextBox.Text);
+        }
+        public List<Task> SerchTaskList(String serchWord,List<Task> inputTaskList)
+        {
+            List<Task> fullList = AccessorTaskList.CopyTaskList(inputTaskList);
+            List<Task> resultTaskList = new List<Task>();
+            foreach (Task task in fullList)
             {
-                string taskName = serchTextBox.Text;
-
-                    if (task.taskSummary.Contains(taskName))
-                    {
-                        taskSerchResult.Add(task);
-                    }
+                if (task.taskSummary.Contains(serchWord))
+                {
+                    resultTaskList.Add(task);
+                     Console.WriteLine(task.taskSummary);
+                }
             }
-            taskview.UpdateDataGrid(taskSerchResult);
+            return resultTaskList;
         }
 
         private void notificateButton_Click(object sender, RoutedEventArgs e)

@@ -59,9 +59,50 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
+    <Compile Include="C2_TaskViewUnit.xaml.cs">
+      <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_Cancel.xaml.cs">
+      <DependentUpon>C5_Cancel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_Error.xaml.cs">
+      <DependentUpon>C5_Error.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_Errormessage.cs" />
+    <Compile Include="C5_PriorityList.cs" />
+    <Compile Include="C5_TaskAdd.xaml.cs">
+      <DependentUpon>C5_TaskAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_TaskEdit.xaml.cs">
+      <DependentUpon>C5_TaskEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C5_TaskFileProcess.cs" />
+    <Compile Include="Notice.cs" />
+    <Compile Include="TaskViewStackPanelController.cs" />
+    <Compile Include="Sort.cs" />
     <Compile Include="TaskView.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Task.cs" />
+    <Page Include="C2_TaskViewUnit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_Cancel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="C5_TaskAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C5_TaskEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +116,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +139,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="F2_OptionData\optionData.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,7 +150,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="F1_TaskData\" />
-    <Folder Include="F2_OptionData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>5.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>5.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
