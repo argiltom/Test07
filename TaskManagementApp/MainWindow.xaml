@@ -25,9 +25,9 @@
         <Button x:Name="sortOfLimit" Content="期限順" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="95" RenderTransformOrigin="0.817,0.542" FontSize="20"/>
         <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,25,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="44" Width="337" Foreground="#FF020000" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
         <Button x:Name="notificateButton" Content="通知ON_OFF" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20"/>
-        <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="775" Margin="211,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5" TextChanged="serchTextBox_TextChanged" BorderBrush="Black"/>
+        <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="775" Margin="211,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5"  BorderBrush="Black"/>
 
-        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="131" Margin="88,110,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0,0" Click="addTaskButton_Click" FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070">
+        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="131" Margin="88,110,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0,0"  FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070" Click="addTaskButton_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -59,11 +59,11 @@
         </Button>
 
 
-        <DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="775" Margin="211,275,0,0" IsReadOnly="True" Grid.RowSpan="2"/>
+        <!--<DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="775" Margin="211,275,0,0" IsReadOnly="True" Grid.RowSpan="2"/>-->
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272"/>
         <Border BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Left" Height="75" Margin="211,131,0,0" VerticalAlignment="Top" Width="775">
 
-            <Button x:Name="sortButton"  Margin="701,1,1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0">
+            <Button x:Name="serchButton"  Margin="701,1,1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0" Click="serchTaskButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">
@@ -95,12 +95,9 @@
             </Button>
 
         </Border>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="1092,147,0,0" VerticalAlignment="Top"/>
+        
 
-
-        <Button x:Name="addTaskButton" Content="タスク追加" HorizontalAlignment="Left" Height="135" Margin="66,131,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.135,0.296" Click="addTaskButton_Click"/>
-
-        <Grid Margin="66,306,280,151" >
+        <Grid Margin="66,306,280,95" Grid.RowSpan="2" >
             <Border BorderBrush="#111111" BorderThickness="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="SPtaskView"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
