@@ -23,6 +23,7 @@ namespace TaskManagementApp
         /// <summary>
         /// xamlのsummaryTextと連携(依存関係プロパティ)
         /// </summary>
+        public Task task;
         public static readonly DependencyProperty SummaryTextProperty =
             DependencyProperty.Register(
                     "SummaryText",
@@ -113,6 +114,13 @@ namespace TaskManagementApp
             SummaryText = task.taskSummary;
             TaskLimitText ="期限："+task.taskLimit;
             TaskImportanceText = "重要度:" +task.taskPriority;
+            this.task = task;
+        }
+
+        private void EditTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            C5_TaskEdit te = new C5_TaskEdit(task);
+            te.Show();
         }
     }
 }

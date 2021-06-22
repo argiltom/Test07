@@ -39,7 +39,7 @@ namespace TaskManagementApp
             this.limit = DateTime.Parse(editTask.taskLimit);
             editSummary.Text = this.summary;
             editInfo.Text = this.info;
-            editPriority.Text = this.priority.ToString();
+            editPriority.SelectedItem = this.priority.ToString();
             editLimit.SelectedDate = this.limit;
         }
 
