@@ -150,6 +150,7 @@ namespace TaskManagementApp
             TaskLimitText ="期限："+task.taskLimit;
             TaskImportanceText = "重要度:" +task.taskPriority;
             TaskNoticeColor = task.taskNoticeColor;
+
         }
     }
 }
