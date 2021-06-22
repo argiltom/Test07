@@ -117,7 +117,7 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="959,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click"/>
+        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="954,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click"/>
 
 
     </Grid>

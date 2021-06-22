@@ -62,12 +62,7 @@ namespace TaskManagementApp
             dispatcherTimer.Start();
         }
 
-        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
-        {
-            C5_TaskAdd ta = new C5_TaskAdd();
-            ta.Show();
-            
-        }
+        
         /// <summary>
         /// C2 MainWindowでタスク表示を常時更新させる処理
         /// </summary>
@@ -98,10 +93,15 @@ namespace TaskManagementApp
             dispatcherTimer.Stop();
             base.OnClosing(e);
         }
-
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            C5_TaskAdd ta = new C5_TaskAdd();
+            ta.Show();
+        }
         private void EditTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            C5_TaskEdit taskEdit = new C5_TaskEdit(MainWindow.selectingTask);
+            taskEdit.Show();
         }
         private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
         {
