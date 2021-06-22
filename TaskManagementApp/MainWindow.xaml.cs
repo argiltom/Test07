@@ -102,7 +102,7 @@ namespace TaskManagementApp
         }
         public List<Task> SerchTaskList(String serchWord,List<Task> inputTaskList)
         {
-            List<Task> fullList = AccessorTaskList.CopyTaskList(inputTaskList);
+            List<Task> fullList = inputTaskList;
             List<Task> resultTaskList = new List<Task>();
             foreach (Task task in fullList)
             {
