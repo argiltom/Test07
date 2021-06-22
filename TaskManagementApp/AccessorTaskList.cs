@@ -62,9 +62,22 @@ namespace TaskManagementApp
             return taskList;
             
         }
+        /// <summary>
+        /// タスクをtasklistへ追加する、その後それをjsonデータとして書き出す
+        /// </summary>
+        /// <param name="addTask"></param>
         public void AddTaskList(Task addTask)
         {
             taskList.Add(addTask);
+            WriteJsonData();
+        }
+        /// <summary>
+        /// tasklistから指定したタスクを削除する、その後それをjsonデータとして書き出す
+        /// </summary>
+        /// <param name="addTask"></param>
+        public void RemoveTaskList(Task removeTask)
+        {
+            taskList.Remove(removeTask);
             WriteJsonData();
         }
         public void ViewTaskListToCosole()
