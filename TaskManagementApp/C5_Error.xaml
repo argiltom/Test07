@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="C5_Error" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  FontSize="50" VerticalAlignment="Top"><Run Text="{Binding errorMessage,ElementName=C5_Error}"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=message}" FontSize="50" VerticalAlignment="Top"></TextBlock>
         <Button Content="CloseButton" HorizontalAlignment="Left" Margin="289,302,0,0" VerticalAlignment="Top" Width="158" Height="64" Click="Back"/>
 
     </Grid>

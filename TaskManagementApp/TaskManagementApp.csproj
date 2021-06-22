@@ -59,7 +59,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
-
     <Compile Include="C2_TaskViewUnit.xaml.cs">
       <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
     </Compile>
@@ -69,6 +68,7 @@
     <Compile Include="C5_Error.xaml.cs">
       <DependentUpon>C5_Error.xaml</DependentUpon>
     </Compile>
+    <Compile Include="C5_Errormessage.cs" />
     <Compile Include="C5_PriorityList.cs" />
     <Compile Include="C5_TaskAdd.xaml.cs">
       <DependentUpon>C5_TaskAdd.xaml</DependentUpon>
@@ -102,7 +102,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -139,9 +138,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-
     <None Include="F2_OptionData\optionData.json" />
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

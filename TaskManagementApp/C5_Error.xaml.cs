@@ -20,23 +20,25 @@ namespace TaskManagementApp
     /// </summary>
     public partial class C5_Error : Window
     {
-        string errorMassege = "エラー";
+        string eMess = "エラー";
         public C5_Error(bool isSummary)
         {
             InitializeComponent();
             if (isSummary)
             {
-                errorMassege = "概要は150字までにしてください。";
+                eMess = "概要は150字までにしてください。";
             }
             else
             {
-                errorMassege = "詳細は10000字までにしてください。";
+                eMess= "詳細は10000字までにしてください。";
             }
+            C5_Errormessage em = new C5_Errormessage();
+            em.message = eMess;
+            this.DataContext = em;
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(errorMassege);
             Close();
         }
     }
