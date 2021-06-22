@@ -54,7 +54,21 @@ namespace TaskManagementApp
             this.info = editInfo.Text;
             this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
-            tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
+            if (this.summary.Length >= 150)
+            {
+                C5_Error error = new C5_Error(true);
+                error.Show();
+            }
+            if (this.info.Length >= 10000)
+            {
+                C5_Error error = new C5_Error(false);
+                error.Show();
+            }
+            if(this.summary.Length < 150 && this.info.Length < 10000)
+            {
+                tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
+
+            }
             Close();
         }
     }
