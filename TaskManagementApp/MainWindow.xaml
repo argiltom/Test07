@@ -97,13 +97,20 @@
             </Button>
 
         </Border>
-        
 
-        <Grid Margin="66,306,280,95" Grid.RowSpan="2" >
+
+        <Grid Margin="38,306,352,90" Grid.RowSpan="2" >
             <Border BorderBrush="#111111" BorderThickness="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="SPtaskView"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
                     </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <Grid Margin="925,306,38,90" Grid.RowSpan="2">
+            <Border BorderBrush="#111111" BorderThickness="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                 <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="296"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
         </Grid>

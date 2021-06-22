@@ -135,8 +135,14 @@ namespace TaskManagementApp
             }
         }
 
+        public void SelectTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.selectingTask = task;
+        }
 
-        public void compleatedTaskButton_Click(object sender, RoutedEventArgs e)
+
+
+        public void CompleatedTaskButton_Click(object sender, RoutedEventArgs e)
         {
             AccessorTaskList atl = new AccessorTaskList();
             atl.RemoveTaskList(task);

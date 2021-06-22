@@ -27,10 +27,15 @@ namespace TaskManagementApp
         /// <summary>
         ///<para>外部変数:ID=3</para>
         ///<para>現在時刻を格納する</para>
-        ///<para>利用範囲:システム全体</para>
+        ///<para>利用範囲:システム全体
         /// </summary>
         public DateTime nowTime=DateTime.Now;
-
+        /// <summary>
+        /// <para>現在C2で選択しているタスク これの詳細を表示する</para>
+        /// <para>外部変数と同じアクセシビリティではあるが、外部変数として使うことは許可しない</para>
+        /// <para>あくまでC2のみで使う</para>
+        /// </summary>
+        public static Task selectingTask;
         DispatcherTimer dispatcherTimer;
         /// <summary>
         /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
@@ -73,7 +78,10 @@ namespace TaskManagementApp
             Notice notice = new Notice();
 
             //notice.NoticeON();
-
+            if (MainWindow.selectingTask != null)
+            {
+                taskInfoViewTextBlock.Text = selectingTask.taskInfo;
+            }
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
             //作りたいものが先にあって、それを実現する方法を調べて、実装する．
