@@ -13,8 +13,8 @@
             <BitmapImage x:Key="ImageSource1" UriSource="./Resources/taskaddbutton.png" />
             <BitmapImage x:Key="ImageSource2" UriSource="./Resources/taskaddbutton2.png" />
             <BitmapImage x:Key="ImageSource3" UriSource="./Resources/taskaddbutton3.png" />
-            <BitmapImage x:Key="ImageSource4" UriSource="./Resources/SortButton.png" />
-            <BitmapImage x:Key="ImageSource5" UriSource="./Resources/SortButton2.png" />
+            <BitmapImage x:Key="ImageSource4" UriSource="./Resources/SearchButton.png" />
+            <BitmapImage x:Key="ImageSource5" UriSource="./Resources/SearchButton2.png" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>

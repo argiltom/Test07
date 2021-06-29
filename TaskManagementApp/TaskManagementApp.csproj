@@ -188,13 +188,19 @@
     <Resource Include="Resources\TaskAddButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\SortButton.png" />
+    <Resource Include="Resources\SearchButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\SortButton2.png" />
+    <Resource Include="Resources\SearchButton2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TaskCompleteButton.png" />
+    <Resource Include="Resources\TaskCompleteButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskCompleteButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskCompleteButton2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
