@@ -72,7 +72,7 @@ namespace TaskManagementApp
             nowTimeView.Text = nowTime.ToString();
             Notice notice = new Notice();
 
-            //notice.NoticeON();
+            notice.NoticeON();
             if (MainWindow.selectingTask != null)
             {
                 taskInfoViewTextBlock.Text = selectingTask.taskInfo;
@@ -127,6 +127,11 @@ namespace TaskManagementApp
                 }
             }
             return resultTaskList;
+        }
+
+        private void notificateButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
