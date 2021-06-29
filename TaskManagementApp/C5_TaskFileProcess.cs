@@ -23,6 +23,8 @@ namespace TaskManagementApp
             int taskNum = taskList.IndexOf(preTask);
             Task changedTask = new Task() { taskID = 2, taskInfo = info, taskSummary = summary, taskPriority = priority, taskLimit = limit };
             taskList[taskNum] = changedTask;
+            taskList[taskNum].taskNoticeComplishedBefore3Day = false;
+            taskList[taskNum].taskNoticeComplishedBefore1Day = false;
         }
-    }
+    } 
 }
