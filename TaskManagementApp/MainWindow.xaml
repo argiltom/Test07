@@ -8,6 +8,7 @@
         Title="MainWindow" Height="1024" Width="1280"
         ResizeMode="NoResize">
     <!--リサイズの禁止を行った6/23 鈴木智仁-->
+    <!-- 拡大縮小とレイアウトを100％-->
     <Window.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="ImageSource1" UriSource="./Resources/taskaddbutton.png" />
