@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagementApp"
         mc:Ignorable="d"
-        Title="C5_Cancel" Height="450" Width="800">
+        Title="C5_Cancel" Height="450" Width="800" WindowStyle="None">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="69,84,0,0" TextWrapping="Wrap" Text="キャンセルしますか？" FontSize="50" VerticalAlignment="Top"/>
         <Button x:Name="Yes" Content="はい" FontSize="40" HorizontalAlignment="Left" Margin="77,271,0,0" VerticalAlignment="Top" Width="201" Height="96" Click="Yes_Click"/>
