@@ -96,12 +96,18 @@ namespace TaskManagementApp
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
-            ta.Show();
+            ta.ShowDialog();
         }
         private void EditTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            C5_TaskEdit taskEdit = new C5_TaskEdit(MainWindow.selectingTask);
-            taskEdit.Show();
+            //6/29バグ修正:nullチェックの導入
+            if (MainWindow.selectingTask != null)
+            {
+                C5_TaskEdit taskEdit = new C5_TaskEdit(MainWindow.selectingTask);
+                //6/29バグ修正:複数の画面起動を許さないようにした．
+                taskEdit.ShowDialog();
+            }
+
         }
         private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
         {
