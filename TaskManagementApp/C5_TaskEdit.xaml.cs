@@ -33,7 +33,7 @@ namespace TaskManagementApp
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
             this.preTask = editTask;
-            this.summary = editTask.taskSummary;
+            this.summary = editTask.taskSummary;//nullチェックを行ってくれ
             this.info = editTask.taskInfo;
             this.priority = editTask.taskPriority;
             this.limit = DateTime.Parse(editTask.taskLimit);
