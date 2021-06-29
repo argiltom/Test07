@@ -33,28 +33,42 @@ namespace TaskManagementApp
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
             this.preTask = editTask;
-            this.summary = editTask.taskSummary;
+            this.summary = editTask.taskSummary;//nullチェックを行ってくれ
             this.info = editTask.taskInfo;
             this.priority = editTask.taskPriority;
             this.limit = DateTime.Parse(editTask.taskLimit);
             editSummary.Text = this.summary;
             editInfo.Text = this.info;
-            editPriority.Text = this.priority.ToString();
+            editPriority.SelectedItem = this.priority.ToString();
             editLimit.SelectedDate = this.limit;
         }
 
-        private void editCancel_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            cancel.Show();
+            cancel.ShowDialog();
         }
 
-        private void editTask_Click(object sender, RoutedEventArgs e)
+        private void EditTask_Click(object sender, RoutedEventArgs e)
         {
             this.summary = editSummary.Text;
             this.info = editInfo.Text;
             this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
-            tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
+            if (this.summary.Length >= 150)
+            {
+                C5_Error error = new C5_Error(true);
+                error.ShowDialog();
+            }
+            if (this.info.Length >= 10000)
+            {
+                C5_Error error = new C5_Error(false);
+                error.ShowDialog();
+            }
+            if(this.summary.Length < 150 && this.info.Length < 10000)
+            {
+                tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
+
+            }
             Close();
         }
     }

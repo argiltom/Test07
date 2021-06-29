@@ -38,7 +38,7 @@ namespace TaskManagementApp
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            cancel.Show();
+            cancel.ShowDialog();
         }
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
@@ -51,8 +51,22 @@ namespace TaskManagementApp
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
             Debug.WriteLine(this.info);
-            tfp.TaskSend(this.summary, this.info, this.priority + 1, this.limit.ToString());
-            Close();
+            if(this.summary.Length >= 150)
+            {
+                C5_Error error = new C5_Error(true);
+                error.ShowDialog();
+            }
+            if (this.info.Length >= 10000)
+            {
+                C5_Error error = new C5_Error(false);
+                error.ShowDialog();
+            }
+            if (this.info.Length < 10000 && this.summary.Length < 150)
+            {
+                tfp.TaskSend(this.summary, this.info, this.priority + 1, this.limit.ToString());
+                Close();
+            }
+
         }
     }
 }

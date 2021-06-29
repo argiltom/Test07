@@ -36,7 +36,7 @@ namespace TaskManagementApp
             }
 
             stackPanel.Children.RemoveRange(0, stackPanel.Children.Count);
-            foreach (Task task in AccessorTaskList.taskList)
+            foreach (Task task in inputViewTasks)
             {
                 stackPanel.Children.Add(new C2_TaskViewUnit(task));
             }
