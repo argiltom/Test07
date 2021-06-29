@@ -128,6 +128,11 @@ namespace TaskManagementApp
             }
             return resultTaskList;
         }
+
+        private void notificateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
