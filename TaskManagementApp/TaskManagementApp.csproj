@@ -202,5 +202,41 @@
   <ItemGroup>
     <Resource Include="Resources\TaskCompleteButton2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImportanceTab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImportanceTab2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImportanceTab3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DeadlineTab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DeadlineTab2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DeadlineTab3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NoticeButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NoticeButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NoticeButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Lamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Lamp2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
