@@ -135,8 +135,41 @@ namespace TaskManagementApp
             }
         }
 
+        /// <summary>
+        /// xamlのSelectedTaskInfoButtonBorderColorと連携(依存関係プロパティ)
+        /// </summary>
+        public static readonly DependencyProperty SelectedTaskInfoButtonBorderColorProperty =
+            DependencyProperty.Register(
+                    "SelectedTaskInfoButtonBorderColor",
+                    typeof(string),
+                    typeof(C2_TaskViewUnit),//このプロパティを所有する型=このクラス名
+                    new PropertyMetadata("#0000")//初期値 #ARGB
+                );
+        /// <summary>
+        /// SelectedTaskInfoButtonBorderColorへのアクセサー
+        /// </summary>
+        public string SelectedTaskInfoButtonBorderColor
+        {
+            get
+            {
+                return (string)GetValue(SelectedTaskInfoButtonBorderColorProperty);
+            }
+            set
+            {
+                //nullなら透明のまま
+                if (value != null) SetValue(SelectedTaskInfoButtonBorderColorProperty, value);
+            }
+        }
 
-        public void compleatedTaskButton_Click(object sender, RoutedEventArgs e)
+        public void SelectTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.selectingTask = task;
+        }
+
+
+
+
+        public void CompleatedTaskButton_Click(object sender, RoutedEventArgs e)
         {
             AccessorTaskList atl = new AccessorTaskList();
             atl.RemoveTaskList(task);
@@ -150,7 +183,15 @@ namespace TaskManagementApp
             TaskLimitText ="期限："+task.taskLimit;
             TaskImportanceText = "重要度:" +task.taskPriority;
             TaskNoticeColor = task.taskNoticeColor;
-
-        }
+            //現在選択しているタスクが自分であるなら
+            if (MainWindow.selectingTask!= null&&MainWindow.selectingTask==task)
+            {
+                SelectedTaskInfoButtonBorderColor = "#FF0000";
+            }
+            else
+            {
+                SelectedTaskInfoButtonBorderColor = "#000000";
+            }
+}
     }
 }

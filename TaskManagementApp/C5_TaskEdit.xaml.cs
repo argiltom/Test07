@@ -33,7 +33,7 @@ namespace TaskManagementApp
             cancel = new C5_Cancel(this);
             tfp = new C5_TaskFileProcess();
             this.preTask = editTask;
-            this.summary = editTask.taskSummary;
+            this.summary = editTask.taskSummary;//nullチェックを行ってくれ
             this.info = editTask.taskInfo;
             this.priority = editTask.taskPriority;
             this.limit = DateTime.Parse(editTask.taskLimit);
@@ -45,7 +45,7 @@ namespace TaskManagementApp
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            cancel.Show();
+            cancel.ShowDialog();
         }
 
         private void EditTask_Click(object sender, RoutedEventArgs e)
@@ -57,12 +57,12 @@ namespace TaskManagementApp
             if (this.summary.Length >= 150)
             {
                 C5_Error error = new C5_Error(true);
-                error.Show();
+                error.ShowDialog();
             }
             if (this.info.Length >= 10000)
             {
                 C5_Error error = new C5_Error(false);
-                error.Show();
+                error.ShowDialog();
             }
             if(this.summary.Length < 150 && this.info.Length < 10000)
             {
