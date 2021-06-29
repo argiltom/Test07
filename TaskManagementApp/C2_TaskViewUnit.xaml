@@ -9,13 +9,17 @@
              x:Name="TaskViewUnit">
     <!--このXaml自体にTaskViewUnitという名前をつけた-->
     <Grid Background="#ffffff">
-        
-        <TextBlock FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,10,0,0" Height="78" Width="620"><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
+
+
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="880"/>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="735,16,0,0" Height="123"/>
-        <TextBlock FontSize="36" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="119,93,0,0" Height="52" Width="342"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="552,93,86,0" Height="46" Width="242"><Run Text="{Binding TaskImportanceText,ElementName=TaskViewUnit}"/></TextBlock>
+
         <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="159" StrokeThickness="4"  Stroke="{Binding TaskNoticeColor,ElementName=TaskViewUnit}" VerticalAlignment="Top" Width="878" Margin="1,0,0,0"/>
-        <Button  Content="完了" Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="compleatedTaskButton_Click"/>
+        <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Margin="125,14,0,68" Height="78" Width="592" ><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
+        <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="125,92,0,0" Height="41" Width="332" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
+        <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="496,92,0,0" Height="41" Width="234" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskImportanceText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
+        <Border BorderBrush="{Binding SelectedTaskInfoButtonBorderColor,ElementName=TaskViewUnit}" BorderThickness="4" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="120" Margin="751,24,0,0">
+            <Button Content="タスク詳細" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="120" Click="SelectTaskButton_Click"></Button>
+        </Border>
+        <Button  Content="完了" Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="CompleatedTaskButton_Click"/>
     </Grid>
 </UserControl>

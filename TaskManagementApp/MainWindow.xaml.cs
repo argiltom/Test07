@@ -27,10 +27,20 @@ namespace TaskManagementApp
         /// <summary>
         ///<para>外部変数:ID=3</para>
         ///<para>現在時刻を格納する</para>
-        ///<para>利用範囲:システム全体</para>
+        ///<para>利用範囲:システム全体
         /// </summary>
         public DateTime nowTime=DateTime.Now;
+        /// <summary>
+        /// <para>現在C2で選択しているタスク これの詳細を表示する</para>
+        /// <para>外部変数と同じアクセシビリティではあるが、外部変数として使うことは許可しない</para>
+        /// <para>あくまでC2のみで使う</para>
+        /// </summary>
+        public static Task selectingTask;
         DispatcherTimer dispatcherTimer;
+        /// <summary>
+        /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
+        /// </summary>
+        List<Task> taskSerchResult;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,21 +51,18 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             AccessorOptionData aod = new AccessorOptionData();
             aod.InitializeJsonData();
+            //taskSerchResultの初期化
+            taskSerchResult = AccessorTaskList.taskList;
             //TaskView taskview = new TaskView(taskViewGrid);
-            Console.WriteLine("mainWindow稼働中");
+            
             dispatcherTimer = new DispatcherTimer();
-
+            
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
             dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
             dispatcherTimer.Start();
         }
 
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
-        {
-            C5_TaskAdd ta = new C5_TaskAdd();
-            ta.Show();
-            
-        }
+        
         /// <summary>
         /// C2 MainWindowでタスク表示を常時更新させる処理
         /// </summary>
@@ -63,18 +70,22 @@ namespace TaskManagementApp
         {
             nowTime= DateTime.Now;
             nowTimeView.Text = nowTime.ToString();
-            //Notice notice = new Notice();
+            Notice notice = new Notice();
 
-            //notice.NoticeON();
+            notice.NoticeON();
+            if (MainWindow.selectingTask != null)
+            {
+                taskInfoViewTextBlock.Text = selectingTask.taskInfo;
+            }
 
-            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(AccessorTaskList.taskList));
-            //Console.WriteLine("アタランテ");
+            TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
             //作りたいものが先にあって、それを実現する方法を調べて、実装する．
             //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
             //作りたいのなら、リファレンスへの理解は二の次でよい　
             //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
             //それが避けられる戦いならば沈黙を貫き
             //それが必要な戦いならば、最後まで戦い抜く
+            //Console.WriteLine("mainWindow稼働中"+serchTextBox.Text+taskSerchResult.Count());
         }
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -82,9 +93,45 @@ namespace TaskManagementApp
             dispatcherTimer.Stop();
             base.OnClosing(e);
         }
-        private void editTaskButton_Click(object sender, RoutedEventArgs e)
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            C5_TaskAdd ta = new C5_TaskAdd();
+            ta.ShowDialog();
+        }
+        private void EditTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            //6/29バグ修正:nullチェックの導入
+            if (MainWindow.selectingTask != null)
+            {
+                C5_TaskEdit taskEdit = new C5_TaskEdit(MainWindow.selectingTask);
+                //6/29バグ修正:複数の画面起動を許さないようにした．
+                taskEdit.ShowDialog();
+            }
+
+        }
+        private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
+        {
+            taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
+            Console.WriteLine("タスク検索中="+serchTextBox.Text);
+        }
+        public List<Task> SerchTaskList(String serchWord,List<Task> inputTaskList)
+        {
+            List<Task> fullList = inputTaskList;
+            List<Task> resultTaskList = new List<Task>();
+            foreach (Task task in fullList)
+            {
+                if (task.taskSummary.Contains(serchWord))
+                {
+                    resultTaskList.Add(task);
+                     Console.WriteLine(task.taskSummary);
+                }
+            }
+            return resultTaskList;
+        }
+
+        private void notificateButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
