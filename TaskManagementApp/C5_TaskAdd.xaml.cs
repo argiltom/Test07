@@ -13,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+//追加import 追記者 鈴木智仁
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
+
 namespace TaskManagementApp
 {
     /// <summary>
@@ -20,6 +24,31 @@ namespace TaskManagementApp
     /// </summary>
     public partial class C5_TaskAdd : Window
     {
+        //7/2 例外排除の為,×ボタンの無効化 追記者 鈴木智仁
+
+        //externは「これが外部で実装されている」を意味する
+        [DllImport("user32.dll")]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        const int GWL_STYLE = -16;
+        const int WS_SYSMENU = 0x80000;
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            IntPtr handle = new WindowInteropHelper(this).Handle;
+            int style = GetWindowLong(handle, GWL_STYLE);
+            style = style & (~WS_SYSMENU);
+            SetWindowLong(handle, GWL_STYLE, style);
+        }
+
+        //*/7/2 例外排除の為,×ボタンの無効化 追記者 鈴木智仁
+
+
+
         string summary = "";
         string info = "";
         int priority = 1;
