@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TaskManagementApp
 {
@@ -37,7 +38,8 @@ namespace TaskManagementApp
         /// <summary>
         /// SummaryTextへのアクセサー
         /// </summary>
-        public string SummaryText {
+        public string SummaryText
+        {
             get
             {
                 return (string)GetValue(SummaryTextProperty);
@@ -131,7 +133,7 @@ namespace TaskManagementApp
             set
             {
                 //nullなら透明のまま
-                if(value!=null) SetValue(TaskNoticeColorProperty, value);
+                if (value != null) SetValue(TaskNoticeColorProperty, value);
             }
         }
 
@@ -180,11 +182,26 @@ namespace TaskManagementApp
             InitializeComponent();
             this.task = task;
             SummaryText = task.taskSummary;
-            TaskLimitText ="期限："+task.taskLimit;
-            TaskImportanceText = "重要度:" +task.taskPriority;
+            TaskLimitText = "期限：" + task.taskLimit;
+            TaskImportanceText = "重要度:" + task.taskPriority;
             TaskNoticeColor = task.taskNoticeColor;
+
+            //タスクビューの更新をマルチスレッディングで更新
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(TaskViewUpdate);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
+            dispatcherTimer.Start();
+
+        }
+        /// <summary>
+        /// TaskView1個1個に対してのUpdate処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void TaskViewUpdate(object sender, EventArgs eventArgs)
+        {
             //現在選択しているタスクが自分であるなら
-            if (MainWindow.selectingTask!= null&&MainWindow.selectingTask==task)
+            if (MainWindow.selectingTask != null && MainWindow.selectingTask == task)
             {
                 SelectedTaskInfoButtonBorderColor = "#FF0000";
             }
@@ -192,6 +209,11 @@ namespace TaskManagementApp
             {
                 SelectedTaskInfoButtonBorderColor = "#000000";
             }
-}
+            if(TaskNoticeColor!= task.taskNoticeColor)
+            {
+                TaskNoticeColor = task.taskNoticeColor;
+            }
+        }
+
     }
 }

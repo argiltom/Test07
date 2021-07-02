@@ -32,6 +32,7 @@ namespace TaskManagementApp
             else
             {
                 //比較してクラスに格納されているタスクリストと引数のタスクリストの内容が変わっているので、処理を実行
+                Console.WriteLine("stackPanelを更新");
                 viewTasks = new List<Task>(inputViewTasks);
             }
 

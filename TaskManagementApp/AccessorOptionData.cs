@@ -43,7 +43,9 @@ namespace TaskManagementApp
             WriteJsonData();
             ViewOptionToCosole();
         }
-
+        /// <summary>
+        /// Jsonファイルへ現在のOptionデータを書き出す
+        /// </summary>
         public void WriteJsonData()
         {
 

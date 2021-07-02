@@ -18,9 +18,17 @@ using System.Windows.Threading;
 
 namespace TaskManagementApp
 {
-    
+
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
+    /// <para> DataContainerに入れること: </para>
+    /// <para>  バインディングパス名        (型)   </para>
+    /// <para>    SortDaedLineOnVisibility    (Visibility)   </para>
+    /// <para>    SortDaedLineOffVisibility   (Visibility)   </para>
+    /// <para>    SortImportanceOnVisibility  (Visibility)   </para>
+    /// <para>    SortImportanceOffVisibility (Visibility)   </para>
+    /// <para>    lumpOnVisibility            (Visibility)   </para>
+    /// <para>    lumpOffVisibility           (Visibility)   </para>
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -37,6 +45,7 @@ namespace TaskManagementApp
         /// </summary>
         public static Task selectingTask;
         DispatcherTimer dispatcherTimer;
+        AccessorOptionData aod;
         /// <summary>
         /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
         /// </summary>
@@ -49,7 +58,7 @@ namespace TaskManagementApp
             nowTimeView.Text = nowTime.ToString();
             AccessorTaskList atl = new AccessorTaskList();
             atl.InitializeJsonData();
-            AccessorOptionData aod = new AccessorOptionData();
+            aod = new AccessorOptionData();
             aod.InitializeJsonData();
             //taskSerchResultの初期化
             taskSerchResult = AccessorTaskList.taskList;
@@ -79,20 +88,74 @@ namespace TaskManagementApp
             }
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
-            //作りたいものが先にあって、それを実現する方法を調べて、実装する．
-            //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
-            //作りたいのなら、リファレンスへの理解は二の次でよい　
-            //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
-            //それが避けられる戦いならば沈黙を貫き
-            //それが必要な戦いならば、最後まで戦い抜く
-            //Console.WriteLine("mainWindow稼働中"+serchTextBox.Text+taskSerchResult.Count());
-        }
-        protected override void OnClosing(CancelEventArgs e)
+
+            BindingDataUpdater();
+
+
+        }//常時更新処理部
+
+
+        /// <summary>
+        /// Bindingされた情報をDataContextに格納して更新させる処理
+        /// </summary>
+        private void BindingDataUpdater()
         {
-            Console.WriteLine("終了処理!!!");
-            dispatcherTimer.Stop();
-            base.OnClosing(e);
+            BindingStruct bindingStruct = new BindingStruct();
+            //通知ランプの点灯切り替え処理
+            if (AccessorOptionData.option.isNoticeActivated)
+            {
+                //通知ランプのBinding名と同様の変数名でないといけない
+                bindingStruct.lumpOnVisibility = Visibility.Visible;
+                bindingStruct.lumpOffVisibility = Visibility.Collapsed;
+
+            }
+            else
+            {
+
+                bindingStruct.lumpOnVisibility = Visibility.Collapsed;
+                bindingStruct.lumpOffVisibility = Visibility.Visible;
+
+            }
+            //期限順ソートボタンの点灯切り替え処理
+            if (AccessorOptionData.option.sortOption == SortOption.limit)
+            {
+
+                //指定されたBinding名と同様の変数名でないといけない
+                bindingStruct.SortDaedLineOnVisibility = Visibility.Visible;
+                bindingStruct.SortDaedLineOffVisibility = Visibility.Collapsed;
+                bindingStruct.SortImportanceOnVisibility = Visibility.Collapsed;
+                bindingStruct.SortImportanceOffVisibility = Visibility.Visible;
+
+            }
+            else
+            {
+                bindingStruct.SortDaedLineOnVisibility = Visibility.Collapsed;
+                bindingStruct.SortDaedLineOffVisibility = Visibility.Visible;
+                bindingStruct.SortImportanceOnVisibility = Visibility.Visible;
+                bindingStruct.SortImportanceOffVisibility = Visibility.Collapsed;
+            }
+            this.DataContext = bindingStruct;
         }
+        /// <summary>
+        /// MainWindowのXAMLに紐づく,Binding情報をこのクラスから渡す.
+        /// 渡すフィールドは必ずプロパティ(アクセサー)を設定すること
+        /// </summary>
+        public class BindingStruct
+        {
+            public Visibility lumpOnVisibility { get; set; }
+            public Visibility lumpOffVisibility { get; set; }
+            public Visibility SortDaedLineOnVisibility { get; set; }
+            public Visibility SortDaedLineOffVisibility { get; set; }
+            public Visibility SortImportanceOnVisibility { get; set; }
+            public Visibility SortImportanceOffVisibility { get; set; }
+        }
+
+
+        /// <summary>
+        /// タスク追加ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
@@ -103,6 +166,7 @@ namespace TaskManagementApp
             //6/29バグ修正:nullチェックの導入
             if (MainWindow.selectingTask != null)
             {
+
                 C5_TaskEdit taskEdit = new C5_TaskEdit(MainWindow.selectingTask);
                 //6/29バグ修正:複数の画面起動を許さないようにした．
                 taskEdit.ShowDialog();
@@ -128,11 +192,54 @@ namespace TaskManagementApp
             }
             return resultTaskList;
         }
+        private void SortImportanceTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            AccessorOptionData.option.sortOption = SortOption.priority;
+            new AccessorOptionData().WriteJsonData();
+        }
 
+        private void SortDaedLineTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            AccessorOptionData.option.sortOption = SortOption.limit;
+            new AccessorOptionData().WriteJsonData();
+        }
+        /// <summary>
+        /// 通知ボタンを押したときの挙動
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void notificateButton_Click(object sender, RoutedEventArgs e)
         {
+            if (AccessorOptionData.option.isNoticeActivated)
+            {
+                AccessorOptionData.option.isNoticeActivated = false;
+            }
+            else
+            {
+                AccessorOptionData.option.isNoticeActivated = true;
+            }
+        }
+        /// <summary>
+        /// 終了処理
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Console.WriteLine("終了処理!!!");
 
+            dispatcherTimer.Stop();
+            aod.WriteJsonData();
+            //申し訳程度のガベージコレクション
+            GC.Collect();
+            base.OnClosing(e);
         }
     }
 
+    //作りたいものが先にあって、それを実現する方法を調べて、実装する．
+    //作りたいのか、リファレンスを理解したいのか、目的は統一した方が良い
+    //作りたいのなら、リファレンスへの理解は二の次でよい　
+    //作りたいのなら、他の人が作ったものをそのまま部品として組み込んでよい！
+    //それが避けられる戦いならば沈黙を貫き
+    //それが必要な戦いならば、最後まで戦い抜く
+    //Console.WriteLine("mainWindow稼働中"+serchTextBox.Text+taskSerchResult.Count());
 }
