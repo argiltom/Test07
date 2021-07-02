@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace TaskManagementApp
@@ -25,6 +15,13 @@ namespace TaskManagementApp
         /// コンストラクタから受け取ったものを格納するもの
         /// </summary>
         Task task;
+        /// <summary>
+        /// これがtrueになるとTimer内の処理で自分自身のdispatcherTimerを破棄させる．
+        /// </summary>
+        public bool isDispatcherTimerDestory = false;
+
+        DispatcherTimer dispatcherTimer;
+
         /// <summary>
         /// xamlのsummaryTextと連携(依存関係プロパティ)
         /// </summary>
@@ -187,7 +184,7 @@ namespace TaskManagementApp
             TaskNoticeColor = task.taskNoticeColor;
 
             //タスクビューの更新をマルチスレッディングで更新
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(TaskViewUpdate);
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
             dispatcherTimer.Start();
@@ -209,9 +206,14 @@ namespace TaskManagementApp
             {
                 SelectedTaskInfoButtonBorderColor = "#000000";
             }
-            if(TaskNoticeColor!= task.taskNoticeColor)
+            if (TaskNoticeColor != task.taskNoticeColor)
             {
                 TaskNoticeColor = task.taskNoticeColor;
+            }
+            //自分自身の自動破棄 
+            if (isDispatcherTimerDestory)
+            {
+                dispatcherTimer.Stop();
             }
         }
 

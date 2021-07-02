@@ -1,19 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace TaskManagementApp
@@ -29,6 +17,7 @@ namespace TaskManagementApp
     /// <para>    SortImportanceOffVisibility (Visibility)   </para>
     /// <para>    lumpOnVisibility            (Visibility)   </para>
     /// <para>    lumpOffVisibility           (Visibility)   </para>
+    /// <para>    EditTaskButtonVisibility    (Visibility)</para>
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -37,7 +26,7 @@ namespace TaskManagementApp
         ///<para>現在時刻を格納する</para>
         ///<para>利用範囲:システム全体
         /// </summary>
-        public DateTime nowTime=DateTime.Now;
+        public DateTime nowTime = DateTime.Now;
         /// <summary>
         /// <para>現在C2で選択しているタスク これの詳細を表示する</para>
         /// <para>外部変数と同じアクセシビリティではあるが、外部変数として使うことは許可しない</para>
@@ -53,7 +42,7 @@ namespace TaskManagementApp
         public MainWindow()
         {
             InitializeComponent();
-            
+
             Console.WriteLine(nowTime.ToString());
             nowTimeView.Text = nowTime.ToString();
             AccessorTaskList atl = new AccessorTaskList();
@@ -63,28 +52,33 @@ namespace TaskManagementApp
             //taskSerchResultの初期化
             taskSerchResult = AccessorTaskList.taskList;
             //TaskView taskview = new TaskView(taskViewGrid);
-            
+
             dispatcherTimer = new DispatcherTimer();
-            
+
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
             dispatcherTimer.Tick += new EventHandler(MainWindowUpdate);
             dispatcherTimer.Start();
         }
 
-        
+
         /// <summary>
         /// C2 MainWindowでタスク表示を常時更新させる処理
         /// </summary>
-        private void MainWindowUpdate(object sender,EventArgs eventArgs)
+        private void MainWindowUpdate(object sender, EventArgs eventArgs)
         {
-            nowTime= DateTime.Now;
+            nowTime = DateTime.Now;
             nowTimeView.Text = nowTime.ToString();
             Notice notice = new Notice();
 
             notice.NoticeON();
+            //選択しているタスクの情報をtaskInfoViewTextBlockに反映させる
             if (MainWindow.selectingTask != null)
             {
                 taskInfoViewTextBlock.Text = selectingTask.taskInfo;
+            }
+            else //未選択なら
+            {
+                taskInfoViewTextBlock.Text = "タスクを選択して下さい";
             }
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
@@ -134,6 +128,15 @@ namespace TaskManagementApp
                 bindingStruct.SortImportanceOnVisibility = Visibility.Visible;
                 bindingStruct.SortImportanceOffVisibility = Visibility.Collapsed;
             }
+            //タスク編集ボタンの表示切替処理
+            if (MainWindow.selectingTask != null) { 
+                bindingStruct.EditTaskButtonVisibility = Visibility.Visible;
+            }
+            else
+            {
+                bindingStruct.EditTaskButtonVisibility = Visibility.Collapsed;
+            }
+            //データを格納したものをDataContextに渡す．
             this.DataContext = bindingStruct;
         }
         /// <summary>
@@ -148,6 +151,7 @@ namespace TaskManagementApp
             public Visibility SortDaedLineOffVisibility { get; set; }
             public Visibility SortImportanceOnVisibility { get; set; }
             public Visibility SortImportanceOffVisibility { get; set; }
+            public Visibility EditTaskButtonVisibility { get; set; }
         }
 
 
@@ -159,6 +163,7 @@ namespace TaskManagementApp
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             C5_TaskAdd ta = new C5_TaskAdd();
+  
             ta.ShowDialog();
         }
         private void EditTaskButton_Click(object sender, RoutedEventArgs e)
@@ -173,12 +178,12 @@ namespace TaskManagementApp
             }
 
         }
-        private void SerchTaskButton_Click(object sender,RoutedEventArgs e)
+        private void SerchTaskButton_Click(object sender, RoutedEventArgs e)
         {
             taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
-            Console.WriteLine("タスク検索中="+serchTextBox.Text);
+            Console.WriteLine("タスク検索中=" + serchTextBox.Text);
         }
-        public List<Task> SerchTaskList(String serchWord,List<Task> inputTaskList)
+        public List<Task> SerchTaskList(String serchWord, List<Task> inputTaskList)
         {
             List<Task> fullList = inputTaskList;
             List<Task> resultTaskList = new List<Task>();
@@ -187,7 +192,7 @@ namespace TaskManagementApp
                 if (task.taskSummary.Contains(serchWord))
                 {
                     resultTaskList.Add(task);
-                     Console.WriteLine(task.taskSummary);
+                    Console.WriteLine(task.taskSummary);
                 }
             }
             return resultTaskList;
@@ -226,7 +231,6 @@ namespace TaskManagementApp
         protected override void OnClosing(CancelEventArgs e)
         {
             Console.WriteLine("終了処理!!!");
-
             dispatcherTimer.Stop();
             aod.WriteJsonData();
             //申し訳程度のガベージコレクション

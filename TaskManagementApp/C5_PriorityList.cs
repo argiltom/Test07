@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace TaskManagementApp
 {
@@ -14,7 +9,7 @@ namespace TaskManagementApp
         public C5_PriorityList()
         {
             Data = new ObservableCollection<string>();
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 Data.Add(i.ToString());
             }

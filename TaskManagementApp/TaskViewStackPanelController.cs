@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace TaskManagementApp
@@ -15,14 +13,14 @@ namespace TaskManagementApp
     /// 
     public class TaskViewStackPanelController
     {
-        static List<Task> viewTasks=new List<Task>();
+        static List<Task> viewTasks = new List<Task>();
         /// <summary>
         /// stackPanelにアクセスし、内容を更新させる
         /// <para>第一引数にStackPanel 第二引数に表示したいTaskList</para>
         /// </summary>
         /// <param name="stackPanel"></param>
         /// <param name="viewTasks"></param>
-        public static void UpdateTaskViewStakPanel(StackPanel stackPanel,List<Task> inputViewTasks)
+        public static void UpdateTaskViewStakPanel(StackPanel stackPanel, List<Task> inputViewTasks)
         {
             if (CompareTaskList(viewTasks, inputViewTasks))
             {
@@ -35,6 +33,12 @@ namespace TaskManagementApp
                 Console.WriteLine("stackPanelを更新");
                 viewTasks = new List<Task>(inputViewTasks);
             }
+            //各Childrenに紐づいたdispatcherTimerを停止させる
+            foreach (C2_TaskViewUnit taskViewUnit in stackPanel.Children)
+            {
+                taskViewUnit.isDispatcherTimerDestory = true;
+            }
+
 
             stackPanel.Children.RemoveRange(0, stackPanel.Children.Count);
             foreach (Task task in inputViewTasks)
@@ -50,12 +54,12 @@ namespace TaskManagementApp
         /// <returns></returns>
         public static bool CompareTaskList(List<Task> tasksA, List<Task> tasksB)
         {
-            
+
             if (tasksA.Count() != tasksB.Count())
             {
                 return false;
             }
-            for(int i = 0; i < tasksA.Count(); i++)
+            for (int i = 0; i < tasksA.Count(); i++)
             {
                 if (!tasksA[i].Equals(tasksB[i]))
                 {

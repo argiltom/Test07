@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.IO;
+using System.Text.Json;
 
 namespace TaskManagementApp
 {
@@ -20,7 +15,10 @@ namespace TaskManagementApp
         /// option設定情報
         /// </summary>
         static public Option option;
-        string filePath = System.IO.Directory.GetCurrentDirectory() + @"\..\..\F2_OptionData\optionData.json";//@特殊な文字を文字としてそのまま適用する
+        //デバッグ用のパス
+        //string filePath = System.IO.Directory.GetCurrentDirectory() + @"\..\..\F2_OptionData\optionData.json";//@特殊な文字を文字としてそのまま適用する
+        //リリース用のパス
+        string filePath = System.IO.Directory.GetCurrentDirectory() + @"\optionData.json";
         /// <summary>
         /// このメソッドは、MainWindow.xaml.csで、始めに1回だけ呼ばれる
         /// </summary>
@@ -56,7 +54,7 @@ namespace TaskManagementApp
         public void ViewOptionToCosole()
         {
 
-            Console.WriteLine("isNoticeActivated:"+option.isNoticeActivated);
+            Console.WriteLine("isNoticeActivated:" + option.isNoticeActivated);
             Console.WriteLine("sortOption:" + option.sortOption);
             Console.WriteLine("noticeColor:" + option.noticeColor);
         }

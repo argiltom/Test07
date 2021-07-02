@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
 //追加import 追記者 鈴木智仁
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Interop;
 
 namespace TaskManagementApp
@@ -80,7 +68,7 @@ namespace TaskManagementApp
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
             Debug.WriteLine(this.info);
-            if(this.summary.Length >= 150)
+            if (this.summary.Length >= 150)
             {
                 C5_Error error = new C5_Error(true);
                 error.ShowDialog();
