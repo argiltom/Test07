@@ -75,6 +75,11 @@ namespace TaskManagementApp
             if (MainWindow.selectingTask != null)
             {
                 taskInfoViewTextBlock.Text = selectingTask.taskInfo;
+                //選択しているタスク(staticフィールドに格納されているクラス) が元のtaskListに存在していないなら,staticに格納されている
+                if (!AccessorTaskList.taskList.Contains(MainWindow.selectingTask))
+                {
+                    MainWindow.selectingTask = null;
+                }
             }
             else //未選択なら
             {
