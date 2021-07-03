@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TaskManagementApp
 {
@@ -25,6 +16,13 @@ namespace TaskManagementApp
         /// </summary>
         Task task;
         /// <summary>
+        /// これがtrueになるとTimer内の処理で自分自身のdispatcherTimerを破棄させる．
+        /// </summary>
+        public bool isDispatcherTimerDestory = false;
+
+        DispatcherTimer dispatcherTimer;
+
+        /// <summary>
         /// xamlのsummaryTextと連携(依存関係プロパティ)
         /// </summary>
         public static readonly DependencyProperty SummaryTextProperty =
@@ -37,7 +35,8 @@ namespace TaskManagementApp
         /// <summary>
         /// SummaryTextへのアクセサー
         /// </summary>
-        public string SummaryText {
+        public string SummaryText
+        {
             get
             {
                 return (string)GetValue(SummaryTextProperty);
@@ -131,7 +130,7 @@ namespace TaskManagementApp
             set
             {
                 //nullなら透明のまま
-                if(value!=null) SetValue(TaskNoticeColorProperty, value);
+                if (value != null) SetValue(TaskNoticeColorProperty, value);
             }
         }
 
@@ -180,11 +179,31 @@ namespace TaskManagementApp
             InitializeComponent();
             this.task = task;
             SummaryText = task.taskSummary;
-            TaskLimitText ="期限："+task.taskLimit;
-            TaskImportanceText = "重要度:" +task.taskPriority;
+            TaskLimitText = "期限：" + task.taskLimit;
+            TaskImportanceText = "重要度:" + task.taskPriority;
+            TaskNoticeColor = task.taskNoticeColor;
+
+            //タスクビューの更新をマルチスレッディングで更新
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(TaskViewUpdate);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
+            dispatcherTimer.Start();
+
+        }
+        /// <summary>
+        /// TaskView1個1個に対してのUpdate処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void TaskViewUpdate(object sender, EventArgs eventArgs)
+        {
+            //表示の常時更新
+            SummaryText = task.taskSummary;
+            TaskLimitText = "期限：" + task.taskLimit;
+            TaskImportanceText = "重要度:" + task.taskPriority;
             TaskNoticeColor = task.taskNoticeColor;
             //現在選択しているタスクが自分であるなら
-            if (MainWindow.selectingTask!= null&&MainWindow.selectingTask==task)
+            if (MainWindow.selectingTask != null && MainWindow.selectingTask == task)
             {
                 SelectedTaskInfoButtonBorderColor = "#FF0000";
             }
@@ -192,6 +211,16 @@ namespace TaskManagementApp
             {
                 SelectedTaskInfoButtonBorderColor = "#000000";
             }
-}
+            if (TaskNoticeColor != task.taskNoticeColor)
+            {
+                TaskNoticeColor = task.taskNoticeColor;
+            }
+            //自分自身の自動破棄 
+            if (isDispatcherTimerDestory)
+            {
+                dispatcherTimer.Stop();
+            }
+        }
+
     }
 }

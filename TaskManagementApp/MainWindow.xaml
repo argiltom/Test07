@@ -8,6 +8,7 @@
         Title="MainWindow" Height="1024" Width="1280"
         ResizeMode="NoResize">
     <!--リサイズの禁止を行った6/23 鈴木智仁-->
+    <!-- 拡大縮小とレイアウトを100％-->
     <Window.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="ImageSource1" UriSource="./Resources/taskaddbutton.png" />
@@ -36,11 +37,13 @@
             <RowDefinition Height="431*"/>
             <RowDefinition Height="563*"/>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272" BorderBrush="Black">
-            <Image Margin="0,0,-2,-2" Source="{StaticResource ImageSource17}" Stretch="Fill"/>
+
+        <Border BorderThickness="1" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272" BorderBrush="Black">
+            <Image Margin="0,0,-2,-2" Source="{StaticResource ImageSource17}"  Stretch="Fill"/>
         </Border>
 
-        <Button x:Name="sortOfImportance" HorizontalAlignment="Left" Margin="81,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="93" FontSize="20">
+        <Button x:Name="sortOfImportance" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="95" FontSize="20" Click="SortImportanceTaskButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -48,13 +51,18 @@
                             <ControlTemplate TargetType="Button">
                                 <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
                                     <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
-                                        <Image Name="image" Source="{StaticResource ImageSource6}" />
+                                        <!--DataContainerに入れること-->
+                                        <!--重要度順 ボダン表示切り替え部 BindingPath 変数名=SortImportanceOnVisibility -->
+                                        <Image Name="image" Source="{StaticResource ImageSource8}" Visibility="{Binding Path=SortImportanceOnVisibility}" />
+                                        <!--重要度順 ボダン表示切り替え部 BindingPath 変数名=SortImportanceOffVisibility-->
+                                        <Image Name="image2" Source="{StaticResource ImageSource6}" Visibility="{Binding Path=SortImportanceOffVisibility}" />
                                     </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource7}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource7}" />
+
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
@@ -71,7 +79,9 @@
 
         </Button>
 
-        <Button x:Name="sortOfLimit" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="93" RenderTransformOrigin="0.817,0.542" FontSize="20">
+
+        <Button x:Name="sortOfLimit" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="95" RenderTransformOrigin="0.817,0.542" FontSize="20" Click="SortDaedLineTaskButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -79,13 +89,17 @@
                             <ControlTemplate TargetType="Button">
                                 <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
                                     <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
-                                        <Image Name="image" Source="{StaticResource ImageSource9}" />
+                                        <!--DataContainerに入れること-->
+                                        <!--重要度順 ボダン表示切り替え部 BindingPath 変数名=SortDaedLineOnVisibility -->
+                                        <Image Name="image" Source="{StaticResource ImageSource11}" Visibility="{Binding Path=SortDaedLineOnVisibility}" />
+                                        <!--重要度順 ボダン表示切り替え部 BindingPath 変数名=SortDaedLineOffVisibility-->
+                                        <Image Name="image2" Source="{StaticResource ImageSource9}" Visibility="{Binding Path=SortDaedLineOffVisibility}" />
                                     </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource10}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource10}" />
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
@@ -101,8 +115,13 @@
             </Button.Style>
         </Button>
 
-        <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,25,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="44" Width="337" Foreground="#FFFFFF" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
-        <Button x:Name="notificateButton" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20">
+        <!--通知ランプ Binding lumpOnVisibilityと lumpOffVisibilityを(Visibility型)で DataContainerに入れること-->
+        <Image Height="95" Source="{StaticResource ImageSource16}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOnVisibility}"/>
+        <Image Height="95" Source="{StaticResource ImageSource15}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOffVisibility}"/>
+        <!--/通知ランプ isNoticeをDataContainerに入れること-->
+        <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,25,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="44" Width="337" Foreground="#FF020000" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
+        <Button x:Name="notificateButton" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20" Click="notificateButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -130,7 +149,7 @@
                     </Setter>
                 </Style>
             </Button.Style>
-            <Image Height="95" Source="Lamp2.png" Stretch="Fill" Width="280"/>
+
         </Button>
         <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="812" Margin="116,163,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5"  BorderBrush="Black"/>
 
@@ -227,7 +246,8 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="935,301,0,0" VerticalAlignment="Top" Width="304" Background="#00DDDDDD" Height="104" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click"/>
+        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="954,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}"/>
+
 
 
     </Grid>
