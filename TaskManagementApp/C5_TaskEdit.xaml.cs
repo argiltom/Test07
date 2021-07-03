@@ -85,7 +85,6 @@ namespace TaskManagementApp
                 tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
                 Close();
             }
-            
         }
     }
 }
