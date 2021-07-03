@@ -242,11 +242,11 @@
 
             <Border BorderBrush="#111111" BorderThickness="3" Margin="0,-80,0,0" >
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-3,0">
-                    <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="314"  Grid.RowSpan="2" />
+                    <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="304"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="954,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}"/>
+        <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="935,297,0,0" VerticalAlignment="Top" Width="304" Background="#00DDDDDD" Height="107" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}"/>
 
 
 
