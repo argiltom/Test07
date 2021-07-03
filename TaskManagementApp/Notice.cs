@@ -1,9 +1,5 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;/////////////
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
@@ -28,17 +24,17 @@ namespace TaskManagementApp
                 if (noticeSwitch)
                 {
                     comparedt1dt2 = (dt2.Date - dt1.Date).TotalDays;//差
-                    if (comparedt1dt2 > 1&&comparedt1dt2 <= 3)//期限1<day<=3日前の時　
+                    if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)//期限1<day<=3日前の時　
                     {
                         if (!temp.taskNoticeComplishedBefore3Day) //期限3日前の通知が完了していないのなら
                         {
                             NoticePopUp(temp); //通知を行う
                             temp.taskNoticeComplishedBefore3Day = true;
                         }
-                        
+
                         TaskColor(temp);
                     }
-                    else if (comparedt1dt2>0&&comparedt1dt2 <= 1)//期限0日<dat<=1日前の時
+                    else if (comparedt1dt2 > 0 && comparedt1dt2 <= 1)//期限0日<dat<=1日前の時
                     {
                         if (!temp.taskNoticeComplishedBefore1Day) //期限3日前の通知が完了していないのなら
                         {
@@ -65,7 +61,7 @@ namespace TaskManagementApp
                 .AddText(temp.taskInfo)//タスク名とか
                 .AddText(temp.taskLimit)//期限など通知するタスクの情報を書く
                 .AddText(temp.taskSummary)
-                 // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
+                // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
                 .Show(toast =>//////有効期限を設定
                  {
                      toast.ExpirationTime = DateTime.Now.AddSeconds(10);
@@ -77,11 +73,11 @@ namespace TaskManagementApp
         /// </summary>
         public void TaskColor(Task task)//タスク枠色変更　　引数に通知するタスクのオプション情報が必要かも
         {
-            
+
             //NoticeONのcomparedt1dt2がほしい
             if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)
             {
-                task.taskNoticeColor= new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
+                task.taskNoticeColor = new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
             }
             else if (comparedt1dt2 > 0 && comparedt1dt2 <= 1)
             {
