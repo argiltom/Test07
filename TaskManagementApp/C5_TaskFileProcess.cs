@@ -25,7 +25,10 @@ namespace TaskManagementApp
             taskList[taskNum].taskNoticeComplishedBefore1Day = false;
             */
             //修正者:鈴木智仁　これだと,taskのListが変動した時に,System.ArgumentOutOfRangeExceptionを投げるので,引数のTaskの参照に直接追加情報を代入させました．
-            preTask = new Task() { taskID = 2, taskInfo = info, taskSummary = summary, taskPriority = priority, taskLimit = limit };
+            preTask.taskInfo = info;
+            preTask.taskSummary = summary;
+            preTask.taskPriority = priority;
+            preTask.taskLimit = limit;
             preTask.taskNoticeComplishedBefore3Day = false;
             preTask.taskNoticeComplishedBefore1Day = false;
         }
