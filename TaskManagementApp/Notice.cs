@@ -72,11 +72,10 @@ namespace TaskManagementApp
                 .AddArgument("conversationId", 9813)
                 .AddText(temp.taskSummary)//タスク名とか
                 .AddText(temp.taskLimit)//期限など通知するタスクの情報を書く
-
                 .AddText(temp.taskInfo)
                  // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
 
-                .AddText(temp.taskSummary)
+                
                 // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
 
                 .Show(toast =>//////有効期限を設定
