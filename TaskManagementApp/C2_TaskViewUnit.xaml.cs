@@ -197,6 +197,11 @@ namespace TaskManagementApp
         /// <param name="eventArgs"></param>
         private void TaskViewUpdate(object sender, EventArgs eventArgs)
         {
+            //表示の常時更新
+            SummaryText = task.taskSummary;
+            TaskLimitText = "期限：" + task.taskLimit;
+            TaskImportanceText = "重要度:" + task.taskPriority;
+            TaskNoticeColor = task.taskNoticeColor;
             //現在選択しているタスクが自分であるなら
             if (MainWindow.selectingTask != null && MainWindow.selectingTask == task)
             {
