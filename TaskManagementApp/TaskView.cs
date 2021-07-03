@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 /// <summary>
@@ -33,7 +29,7 @@ namespace TaskManagementApp
         /// </summary>
         /// <param name="getDataGrid"></param>
         /// <param name="tasks"></param>
-        public TaskView(DataGrid getDataGrid,List<Task> tasks)
+        public TaskView(DataGrid getDataGrid, List<Task> tasks)
         {
             dataGrid = getDataGrid;
             UpdateDataGrid(tasks);
