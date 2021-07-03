@@ -59,7 +59,8 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource7}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource7}" />
+                                        
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
@@ -94,7 +95,7 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource10}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource10}" />
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
