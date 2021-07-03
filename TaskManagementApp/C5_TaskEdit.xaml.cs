@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 //追加import 追記者 鈴木智仁
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -82,6 +83,11 @@ namespace TaskManagementApp
             }
             if (this.summary.Length < 150 && this.info.Length < 10000)
             {
+                Debug.WriteLine("どう？");
+                Debug.WriteLine(this.limit);
+                Debug.WriteLine(this.summary);
+                Debug.WriteLine(this.priority);
+                Debug.WriteLine(this.info);
                 tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
                 Close();
             }
