@@ -79,7 +79,6 @@ namespace TaskManagementApp
                  {
                      toast.ExpirationTime = DateTime.Now.AddSeconds(10);
                  });
-
         }
 
         /// <summary>
@@ -87,7 +86,6 @@ namespace TaskManagementApp
         /// </summary>
         public void TaskColor(Task task)//タスク枠色変更　　引数に通知するタスクのオプション情報が必要かも
         {
-
             //NoticeONのcomparedt1dt2がほしい
             if(comparedt1dt2 > 3)
             {
