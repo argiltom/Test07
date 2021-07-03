@@ -67,9 +67,8 @@ namespace TaskManagementApp
             if(this.summary.Length < 150 && this.info.Length < 10000)
             {
                 tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());
-
+                Close();
             }
-            Close();
         }
     }
 }
