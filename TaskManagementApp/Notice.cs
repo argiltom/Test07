@@ -1,6 +1,13 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;/////////////
 using System;
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+
 namespace TaskManagementApp
 {
     /// <summary>
@@ -43,8 +50,13 @@ namespace TaskManagementApp
                         }
                         TaskColor(temp);//上と同じ
                     }
+                    else if (comparedt1dt2<=0)
+                    {
+                        TaskColor(temp);
+                    }
                     else
-                    {//多分なにもしない
+                    {
+                        //なにもしない
                     }
                 }
             }
@@ -58,14 +70,20 @@ namespace TaskManagementApp
             new ToastContentBuilder()
                 .AddArgument("action", "viewConversation")
                 .AddArgument("conversationId", 9813)
-                .AddText(temp.taskInfo)//タスク名とか
+                .AddText(temp.taskSummary)//タスク名とか
                 .AddText(temp.taskLimit)//期限など通知するタスクの情報を書く
+
+                .AddText(temp.taskInfo)
+                 // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
+
                 .AddText(temp.taskSummary)
                 // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
+
                 .Show(toast =>//////有効期限を設定
                  {
                      toast.ExpirationTime = DateTime.Now.AddSeconds(10);
                  });
+
         }
 
         /// <summary>
@@ -75,6 +93,10 @@ namespace TaskManagementApp
         {
 
             //NoticeONのcomparedt1dt2がほしい
+            if(comparedt1dt2 > 3)
+            {
+                new PropertyMetadata("#0000");//透明
+            }
             if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)
             {
                 task.taskNoticeColor = new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
@@ -83,9 +105,13 @@ namespace TaskManagementApp
             {
                 task.taskNoticeColor = new Color(255, 0, 0).ToString();//タスクの枠色を赤色に変更する
             }
+            else if (comparedt1dt2 <=0)
+            {
+                task.taskNoticeColor = new Color(0, 0, 0).ToString();
+            }
             else
             {
-                //多分何もしない
+                //何もしない
             }
             AccessorTaskList view = new AccessorTaskList();
             view.ViewTaskListToCosole();//色を反映させたい
