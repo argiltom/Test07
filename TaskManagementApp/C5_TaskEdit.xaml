@@ -12,7 +12,7 @@
             <ColumnDefinition Width="453*"/>
             <ColumnDefinition Width="340*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Cancel" Content="Button" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1" Click="Cancel_Click"/>
+        <Button x:Name="Cancel" Content="キャンセル" HorizontalAlignment="Left" Margin="270.667,10,0,0" VerticalAlignment="Top" Width="59" Height="52" Grid.Column="1" Click="Cancel_Click"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="  タスク編集画面" FontSize="30" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="タスク概要" FontSize="20" VerticalAlignment="Top"/>
         <TextBox x:Name="editSummary" HorizontalAlignment="Left" Height="51" Margin="10,76,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Width="706" Grid.ColumnSpan="2" AcceptsReturn="True"/>

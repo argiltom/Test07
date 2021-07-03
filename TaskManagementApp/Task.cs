@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
     /// <summary>
     /// M7:TaskClass
     /// </summary>
-    [Serializable] public class Task
+    [Serializable]
+    public class Task
     {
         public int taskID { set; get; }
         public string taskSummary { set; get; }
@@ -28,7 +25,7 @@ namespace TaskManagementApp
         /// C7 C3にて3日前のタスクの通知が完了したならtrue 未完了ならfalse (C3のタスク通知で用いる) C5の方にも出来れば追記したい
         /// タスク期限を修正したら,この変数をfalseに戻す！！！！　C5側の責任
         /// </summary>
-        public bool taskNoticeComplishedBefore3Day{ set; get; }
+        public bool taskNoticeComplishedBefore3Day { set; get; }
         /// <summary>
         /// C7 C3にて1日前のタスクの通知が完了したならtrue 未完了ならfalse (C3のタスク通知で用いる) C5の方にも出来れば追記したい
         /// タスク期限を修正したら,この変数をfalseに戻す！！！！ C5側の責任
