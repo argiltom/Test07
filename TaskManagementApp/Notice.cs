@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TaskManagementApp
 {
@@ -47,8 +48,13 @@ namespace TaskManagementApp
                         }
                         TaskColor(temp);//上と同じ
                     }
+                    else if (comparedt1dt2<=0)
+                    {
+                        TaskColor(temp);
+                    }
                     else
-                    {//多分なにもしない
+                    {
+                        //なにもしない
                     }
                 }
             }
@@ -80,6 +86,10 @@ namespace TaskManagementApp
         {
             
             //NoticeONのcomparedt1dt2がほしい
+            if(comparedt1dt2 > 3)
+            {
+                new PropertyMetadata("#0000");//透明
+            }
             if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)
             {
                 task.taskNoticeColor= new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
@@ -88,9 +98,13 @@ namespace TaskManagementApp
             {
                 task.taskNoticeColor = new Color(255, 0, 0).ToString();//タスクの枠色を赤色に変更する
             }
+            else if (comparedt1dt2 <=0)
+            {
+                task.taskNoticeColor = new Color(0, 0, 0).ToString();
+            }
             else
             {
-                //多分何もしない
+                //何もしない
             }
             AccessorTaskList view = new AccessorTaskList();
             view.ViewTaskListToCosole();//色を反映させたい
