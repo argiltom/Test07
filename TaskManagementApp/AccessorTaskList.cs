@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace TaskManagementApp
 {
@@ -21,7 +17,10 @@ namespace TaskManagementApp
         /// タスクリスト
         /// </summary>
         static public List<Task> taskList;
-        string filePath = System.IO.Directory.GetCurrentDirectory() + @"\..\..\F1_TaskData\taskData.json";//@特殊な文字を文字としてそのまま適用する
+        //デバッグ用のパス
+        //string filePath = System.IO.Directory.GetCurrentDirectory() + @"\..\..\F1_TaskData\taskData.json";//@特殊な文字を文字としてそのまま適用する
+        //リリース用のパス
+        string filePath = System.IO.Directory.GetCurrentDirectory() + @"\taskData.json";
         /// <summary>
         /// このメソッドは、MainWindow.xaml.csで、始めに1回だけ呼ばれる
         /// </summary>
@@ -37,7 +36,7 @@ namespace TaskManagementApp
             else //jsonファイルが存在しないなら
             {
                 List<Task> templist = new List<Task>();
-                Task tempTask = new Task() { taskID = 1, taskInfo = "taskInfo",taskSummary= "summary",taskLimit=DateTime.Now.ToString(),taskPriority=1};
+                Task tempTask = new Task() { taskID = 1, taskInfo = "taskInfo", taskSummary = "summary", taskLimit = DateTime.Now.ToString(), taskPriority = 1 };
                 templist.Add(tempTask);
                 string tempJsonString = JsonSerializer.Serialize<List<Task>>(templist);
                 System.IO.File.WriteAllText(filePath, tempJsonString);//新しくjsonファイルを生成
@@ -51,7 +50,7 @@ namespace TaskManagementApp
         {
 
             string outJsonString = JsonSerializer.Serialize<List<Task>>(taskList);//クラスからJsonStringを生成
-            System.IO.File.WriteAllText(filePath,outJsonString);//@特殊な文字を文字としてそのまま適用する
+            System.IO.File.WriteAllText(filePath, outJsonString);//@特殊な文字を文字としてそのまま適用する
         }
         /// <summary>
         /// 取得したファイル情報から、タスクのリストを生成し渡す．
@@ -60,7 +59,7 @@ namespace TaskManagementApp
         public List<Task> GetTaskList()
         {
             return taskList;
-            
+
         }
         /// <summary>
         /// タスクをtasklistへ追加する、その後それをjsonデータとして書き出す
@@ -88,7 +87,7 @@ namespace TaskManagementApp
         static public List<Task> CopyTaskList(List<Task> inputTasks)
         {
             List<Task> resultTaskList = new List<Task>();
-            foreach(Task task in inputTasks)
+            foreach (Task task in inputTasks)
             {
                 resultTaskList.Add(task);
             }
@@ -96,7 +95,7 @@ namespace TaskManagementApp
         }
         public void ViewTaskListToCosole()
         {
-            foreach(Task task in taskList)
+            foreach (Task task in taskList)
             {
                 Console.WriteLine(task.taskID);
                 Console.WriteLine(task.taskSummary);
