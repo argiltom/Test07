@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace TaskManagementApp
 {
-    public enum SortOption {priority,limit}
-    [Serializable] public class Color
+    public enum SortOption { priority, limit }
+    [Serializable]
+    public class Color
     {
         int r, g, b;
-        public Color(int r ,int g ,int b)
+        public Color(int r, int g, int b)
         {
             this.R = r;
             this.G = g;
@@ -19,12 +15,13 @@ namespace TaskManagementApp
         }
         int R
         {
-            set {
+            set
+            {
                 if (value > 255)
                 {
                     this.r = 255;
                 }
-                else if(value<0)
+                else if (value < 0)
                 {
                     this.r = 0;
                 }
@@ -91,22 +88,26 @@ namespace TaskManagementApp
             return ret;
         }
     }
-    [Serializable] public class Option
+    [Serializable]
+    public class Option
     {
         //jsonシリアライズするにはプロパティが定義されている必要がある
         /// <summary>
         /// #FF00FFみたいなカラー情報が格納されている
         /// </summary>
-        public string noticeColor {
+        public string noticeColor
+        {
             set;
             get;
         }
 
-        public SortOption sortOption {
+        public SortOption sortOption
+        {
             set;
             get;
         }
-        public bool isNoticeActivated {
+        public bool isNoticeActivated
+        {
             set;
             get;
         }
