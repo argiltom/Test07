@@ -86,5 +86,10 @@ namespace TaskManagementApp
                 Close();
             }
         }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

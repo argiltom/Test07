@@ -7,9 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="160" d:DesignWidth="880"
              x:Name="TaskViewUnit">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="ImageSource1" UriSource="./Resources/TaskCompleteButton.png" />
+            <BitmapImage x:Key="ImageSource2" UriSource="./Resources/TaskCompleteButton2.png" />
+            <BitmapImage x:Key="ImageSource3" UriSource="./Resources/TaskCompleteButton3.png" />
+            <BitmapImage x:Key="ImageSource4" UriSource="./Resources/DetailButton.png" />
+            <BitmapImage x:Key="ImageSource5" UriSource="./Resources/DetailButton2.png" />
+            <BitmapImage x:Key="ImageSource6" UriSource="./Resources/DetailButton3.png" />
+            <BitmapImage x:Key="ImageSource7" UriSource="./Resources/TaskBack.png" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <!--このXaml自体にTaskViewUnitという名前をつけた-->
     <Grid Background="#ffffff">
-
+        <Image Margin="0,0,2,1" Source="{StaticResource ImageSource7}" Stretch="Fill"/>
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="880"/>
         <!--                                                                                                                        ↓参照クラスの指定            -->
@@ -17,9 +28,68 @@
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Margin="125,14,0,68" Height="78" Width="592" ><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="125,92,0,0" Height="41" Width="332" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="496,92,0,0" Height="41" Width="234" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskImportanceText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
-        <Border BorderBrush="{Binding SelectedTaskInfoButtonBorderColor,ElementName=TaskViewUnit}" BorderThickness="4" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="120" Margin="751,24,0,0">
-            <Button Content="タスク詳細" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="120" Click="SelectTaskButton_Click"></Button>
+        <Border BorderBrush="{Binding SelectedTaskInfoButtonBorderColor,ElementName=TaskViewUnit}" BorderThickness="0" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="120" Margin="750,16,10,0">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="120" Click="SelectTaskButton_Click" Margin="-4">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
+                                        <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
+                                            <Image Name="image" Source="{StaticResource ImageSource4}" />
+                                        </StackPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
+                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource5}" />
+                                            <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
+                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource6}" />
+                                            <Setter TargetName="panel" Property="Background" Value="#00738B99" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+            </Button>
         </Border>
-        <Button  Content="完了" Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="CompleatedTaskButton_Click"/>
+        <Button Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="CompleatedTaskButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
+                                    <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
+                                        <Image Name="image" Source="{StaticResource ImageSource1}" />
+                                    </StackPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
+                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource2}" />
+                                        <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
+                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource3}" />
+                                        <Setter TargetName="panel" Property="Background" Value="#00738B99" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+
+        </Button>
+        
     </Grid>
 </UserControl>
