@@ -28,9 +28,11 @@ namespace TaskManagementApp
             {
                 DateTime dt1 = DateTime.Now;//現在時刻
                 DateTime dt2 = DateTime.Parse(temp.taskLimit);//タスクの締め切り時間
+                comparedt1dt2 = (dt2.Date - dt1.Date).TotalDays;//差
+                TaskColor(temp);//タスクの色変更更新
                 if (noticeSwitch)
                 {
-                    comparedt1dt2 = (dt2.Date - dt1.Date).TotalDays;//差
+                    
                     if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)//期限1<day<=3日前の時　
                     {
                         if (!temp.taskNoticeComplishedBefore3Day) //期限3日前の通知が完了していないのなら
@@ -38,21 +40,18 @@ namespace TaskManagementApp
                             NoticePopUp(temp); //通知を行う
                             temp.taskNoticeComplishedBefore3Day = true;
                         }
-
-                        TaskColor(temp);
                     }
-                    else if (comparedt1dt2 > 0 && comparedt1dt2 <= 1)//期限0日<dat<=1日前の時
+                    else if (comparedt1dt2 >= 0 && comparedt1dt2 <= 1)//期限0日<=dat<=1日前の時
                     {
                         if (!temp.taskNoticeComplishedBefore1Day) //期限3日前の通知が完了していないのなら
                         {
                             NoticePopUp(temp); //通知を行う
                             temp.taskNoticeComplishedBefore1Day = true;
                         }
-                        TaskColor(temp);//上と同じ
                     }
-                    else if (comparedt1dt2<=0)
+                    else if (comparedt1dt2<0)
                     {
-                        TaskColor(temp);
+                        
                     }
                     else
                     {
@@ -76,13 +75,10 @@ namespace TaskManagementApp
                  // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
 
                 
-                // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
-
                 .Show(toast =>//////有効期限を設定
                  {
                      toast.ExpirationTime = DateTime.Now.AddSeconds(10);
                  });
-
         }
 
         /// <summary>
@@ -90,21 +86,20 @@ namespace TaskManagementApp
         /// </summary>
         public void TaskColor(Task task)//タスク枠色変更　　引数に通知するタスクのオプション情報が必要かも
         {
-
             //NoticeONのcomparedt1dt2がほしい
             if(comparedt1dt2 > 3)
             {
-                new PropertyMetadata("#0000");//透明
+                task.taskNoticeColor = "#0000";
             }
             if (comparedt1dt2 > 1 && comparedt1dt2 <= 3)
             {
                 task.taskNoticeColor = new Color(255, 255, 0).ToString();//タスクの枠色を黄色に変更する
             }
-            else if (comparedt1dt2 > 0 && comparedt1dt2 <= 1)
+            else if (comparedt1dt2 >= 0 && comparedt1dt2 <= 1)
             {
                 task.taskNoticeColor = new Color(255, 0, 0).ToString();//タスクの枠色を赤色に変更する
             }
-            else if (comparedt1dt2 <=0)
+            else if (comparedt1dt2 <0)
             {
                 task.taskNoticeColor = new Color(0, 0, 0).ToString();
             }

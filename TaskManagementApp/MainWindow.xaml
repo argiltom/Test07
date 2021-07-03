@@ -37,11 +37,13 @@
             <RowDefinition Height="431*"/>
             <RowDefinition Height="563*"/>
         </Grid.RowDefinitions>
+
         <Border BorderThickness="1" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1272" BorderBrush="Black">
             <Image Margin="0,0,-2,-2" Source="{StaticResource ImageSource17}"  Stretch="Fill"/>
         </Border>
 
         <Button x:Name="sortOfImportance" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="95" FontSize="20" Click="SortImportanceTaskButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -59,7 +61,8 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource7}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource7}" />
+                                        
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
@@ -76,7 +79,9 @@
 
         </Button>
 
+
         <Button x:Name="sortOfLimit" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top" Width="175" Background="#00DDDDDD" Height="95" RenderTransformOrigin="0.817,0.542" FontSize="20" Click="SortDaedLineTaskButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -94,7 +99,7 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource10}" />
+                                        <Setter TargetName="image2" Property="Source" Value="{StaticResource ImageSource10}" />
                                         <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
@@ -109,12 +114,14 @@
                 </Style>
             </Button.Style>
         </Button>
+
         <!--通知ランプ Binding lumpOnVisibilityと lumpOffVisibilityを(Visibility型)で DataContainerに入れること-->
         <Image Height="95" Source="{StaticResource ImageSource16}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOnVisibility}"/>
         <Image Height="95" Source="{StaticResource ImageSource15}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOffVisibility}"/>
         <!--/通知ランプ isNoticeをDataContainerに入れること-->
         <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,25,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="44" Width="337" Foreground="#FF020000" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
         <Button x:Name="notificateButton" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20" Click="notificateButton_Click">
+
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -144,10 +151,10 @@
             </Button.Style>
             
         </Button>
-        <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="775" Margin="211,131,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5"  BorderBrush="Black"/>
+        <TextBox x:Name="serchTextBox" HorizontalAlignment="Left" Height="75" TextWrapping="Wrap" Text="タスクの検索" VerticalAlignment="Top" Width="812" Margin="116,163,0,0" RenderTransformOrigin="0.54,0.663" FontSize="36" Opacity="0.5"  BorderBrush="Black"/>
 
 
-        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="131" Margin="88,110,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0,0"  FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070" Click="AddTaskButton_Click">
+        <Button x:Name="addTaskButton" HorizontalAlignment="Left" Height="114" Margin="23,124,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0,0"  FontSize="20" BorderThickness="0" Foreground="#00781C1C" Background="#00DDDDDD" BorderBrush="#00707070" Click="AddTaskButton_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
@@ -177,48 +184,53 @@
             </Button.Style>
 
         </Button>
+        <Border HorizontalAlignment="Left" Height="75" Margin="116,163,0,0" VerticalAlignment="Top" Width="812">
+
+            <Border BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Right" Width="812">
+
+                <Button x:Name="serchButton"  Margin="738,1,-1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0" Click="SerchTaskButton_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderThickness="0" BorderBrush="#00707070">
+                                            <StackPanel x:Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
+                                                <Image x:Name="image" Source="{StaticResource ImageSource4}" />
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource4}" />
+                                                <Setter TargetName="panel" Property="Background" Value="#FFBEE6FD" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource5}" />
+                                                <Setter TargetName="panel" Property="Background" Value="#FFBEE6FD" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+            </Border>
 
 
-        <!--<DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="775" Margin="211,275,0,0" IsReadOnly="True" Grid.RowSpan="2"/>-->
-
-        <Border BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Left" Height="75" Margin="211,131,0,0" VerticalAlignment="Top" Width="775">
-
-            <Button x:Name="serchButton"  Margin="701,1,1,1" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" Padding="0" BorderThickness="0" Click="SerchTaskButton_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
-                                        <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
-                                            <Image Name="image" Source="{StaticResource ImageSource4}" />
-                                        </StackPanel>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="true">
-                                            <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource4}" />
-                                            <Setter TargetName="panel" Property="Background" Value="#FFBEE6FD" />
-                                        </Trigger>
-                                        <Trigger Property="IsPressed" Value="true">
-                                            <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
-                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource5}" />
-                                            <Setter TargetName="panel" Property="Background" Value="#FFBEE6FD" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Style>
-
-            </Button>
 
         </Border>
 
 
+        <!--<DataGrid x:Name="taskViewGrid" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="775" Margin="211,275,0,0" IsReadOnly="True" Grid.RowSpan="2"/>-->
 
-        <Grid Margin="38,306,320,90" Grid.RowSpan="2" >
+
+
+        <Grid Margin="23,243,335,153" Grid.RowSpan="2" >
             <Border BorderBrush="#111111" BorderThickness="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="SPtaskView"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
@@ -226,15 +238,17 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Grid Margin="950,306,10,200" Grid.RowSpan="2" >
+        <Grid Margin="935,243,25,263" Grid.RowSpan="2" >
 
             <Border BorderBrush="#111111" BorderThickness="3" >
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="auto"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
         </Grid>
         <Button x:Name="editTaskButton" Content="タスク編集" HorizontalAlignment="Left" Margin="954,364,0,0" VerticalAlignment="Top" Width="303" Background="#00DDDDDD" Height="110" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}"/>
+
 
 
     </Grid>
