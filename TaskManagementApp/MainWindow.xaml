@@ -238,11 +238,11 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Grid Margin="935,243,25,263" Grid.RowSpan="2" >
+        <Grid Margin="935,243,12,263" Grid.RowSpan="2" >
 
             <Border BorderBrush="#111111" BorderThickness="3" Margin="0,-80,0,0" >
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-3,0">
-                    <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="304"  Grid.RowSpan="2" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
+                    <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="286"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
         </Grid>
