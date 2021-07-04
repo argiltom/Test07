@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
+
 
 namespace TaskManagementApp
 {
@@ -31,6 +33,12 @@ namespace TaskManagementApp
             preTask.taskLimit = limit;
             preTask.taskNoticeComplishedBefore3Day = false;
             preTask.taskNoticeComplishedBefore1Day = false;
+            Debug.WriteLine("OK?");
+            Debug.WriteLine(preTask.taskInfo);
+            Debug.WriteLine(preTask.taskSummary);
+            Debug.WriteLine(preTask.taskPriority);
+            Debug.WriteLine(preTask.taskLimit);
+
         }
     }
 }

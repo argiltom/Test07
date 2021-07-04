@@ -170,8 +170,8 @@ namespace TaskManagementApp
 
         public void CompleatedTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            AccessorTaskList atl = new AccessorTaskList();
-            atl.RemoveTaskList(task);
+            C2_TaskCompleateAskWindow c2_TaskCompleateAskWindow = new C2_TaskCompleateAskWindow(task);
+            c2_TaskCompleateAskWindow.ShowDialog();
         }
 
         public C2_TaskViewUnit(Task task)
