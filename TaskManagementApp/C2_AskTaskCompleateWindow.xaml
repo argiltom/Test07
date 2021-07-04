@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagementApp"
         mc:Ignorable="d"
-        Title="タスクの完了" Height="225" Width="400">
+        Title="タスクの完了" Height="225" Width="400"
+        ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="51,10,0,0" TextWrapping="Wrap" Text="以下のタスクを消去しますか?" FontSize="25" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="52,0,0,0" TextWrapping="Wrap" Text="以下のタスクを消去しますか?" FontSize="25" VerticalAlignment="Top"/>
         <Button x:Name="Yes" Content="はい" FontSize="20" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" Height="48" Click="Yes_Click" Margin="28,125,0,0"/>
         <Button x:Name="No" Content="いいえ" FontSize="20" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" Height="48" Click="No_Click" Margin="251,125,0,0"/>
         <TextBlock x:Name="taskSummary" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="aaa" FontSize="25" VerticalAlignment="Center" RenderTransformOrigin="0.452,-0.214"/>
-        
     </Grid>
 </Window>
