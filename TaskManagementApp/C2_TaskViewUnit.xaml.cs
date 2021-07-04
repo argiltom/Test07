@@ -137,29 +137,53 @@ namespace TaskManagementApp
         /// <summary>
         /// xamlのSelectedTaskInfoButtonBorderColorと連携(依存関係プロパティ)
         /// </summary>
-        public static readonly DependencyProperty SelectedTaskInfoButtonBorderColorProperty =
+        public static readonly DependencyProperty SelectedTaskInfoButtonVisibilityProperty =
             DependencyProperty.Register(
-                    "SelectedTaskInfoButtonBorderColor",
-                    typeof(string),
-                    typeof(C2_TaskViewUnit),//このプロパティを所有する型=このクラス名
-                    new PropertyMetadata("#0000")//初期値 #ARGB
+                    "SelectedTaskInfoButtonVisibility",
+                    typeof(Visibility),
+                    typeof(C2_TaskViewUnit)//このプロパティを所有する型=このクラス名
                 );
         /// <summary>
         /// SelectedTaskInfoButtonBorderColorへのアクセサー
         /// </summary>
-        public string SelectedTaskInfoButtonBorderColor
+        public Visibility SelectedTaskInfoButtonVisibility
         {
             get
             {
-                return (string)GetValue(SelectedTaskInfoButtonBorderColorProperty);
+                return (Visibility)GetValue(SelectedTaskInfoButtonVisibilityProperty);
             }
             set
             {
                 //nullなら透明のまま
-                if (value != null) SetValue(SelectedTaskInfoButtonBorderColorProperty, value);
+                SetValue(SelectedTaskInfoButtonVisibilityProperty, value);
             }
         }
 
+        /// <summary>
+        /// xamlのSelectedTaskInfoButtonBorderColorと連携(依存関係プロパティ)
+        /// </summary>
+        public static readonly DependencyProperty NotSelectedTaskInfoButtonVisibilityProperty =
+            DependencyProperty.Register(
+                    "NotSelectedTaskInfoButtonVisibilityProperty",
+                    typeof(Visibility),
+                    typeof(C2_TaskViewUnit)//このプロパティを所有する型=このクラス名
+                );
+
+        /// <summary>
+        /// SelectedTaskInfoButtonBorderColorへのアクセサー
+        /// </summary>
+        public Visibility NotSelectedTaskInfoButtonVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(NotSelectedTaskInfoButtonVisibilityProperty);
+            }
+            set
+            {
+                //nullなら透明のまま
+                SetValue(NotSelectedTaskInfoButtonVisibilityProperty, value);
+            }
+        }
         public void SelectTaskButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.selectingTask = task;
@@ -205,11 +229,13 @@ namespace TaskManagementApp
             //現在選択しているタスクが自分であるなら
             if (MainWindow.selectingTask != null && MainWindow.selectingTask == task)
             {
-                SelectedTaskInfoButtonBorderColor = "#FF0000";
+                SelectedTaskInfoButtonVisibility = Visibility.Visible;
+                NotSelectedTaskInfoButtonVisibility = Visibility.Collapsed;
             }
             else
             {
-                SelectedTaskInfoButtonBorderColor = "#000000";
+                SelectedTaskInfoButtonVisibility = Visibility.Collapsed;
+                NotSelectedTaskInfoButtonVisibility = Visibility.Visible;
             }
             if (TaskNoticeColor != task.taskNoticeColor)
             {

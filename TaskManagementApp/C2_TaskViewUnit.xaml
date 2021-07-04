@@ -35,8 +35,8 @@
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Margin="125,14,0,68" Height="78" Width="592" ><Run Text="{Binding SummaryText,ElementName=TaskViewUnit}"/></TextBlock>
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="125,92,0,0" Height="41" Width="332" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskLimitText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
         <TextBlock  FontSize="30" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="496,92,0,0" Height="41" Width="234" RenderTransformOrigin="0.498,0.221"><Run Text="{Binding TaskImportanceText, ElementName=TaskViewUnit}"/><LineBreak/><Run/></TextBlock>
-        <Border BorderBrush="{Binding SelectedTaskInfoButtonBorderColor,ElementName=TaskViewUnit}" BorderThickness="0" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="120" Margin="750,16,10,0">
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="120" Click="SelectTaskButton_Click" Margin="-4">
+        
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="120" Click="SelectTaskButton_Click" Margin="735,16,25,24">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">
@@ -44,13 +44,15 @@
                                 <ControlTemplate TargetType="Button">
                                     <Border Name="border" BorderThickness="0" BorderBrush="#00707070">
                                         <StackPanel Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
-                                            <Image Name="image" Source="{StaticResource ImageSource4}" />
+                                        <Image Name="image" Source="{StaticResource ImageSource4}" Visibility="{Binding NotSelectedTaskInfoButtonVisibilityProperty,ElementName=TaskViewUnit}" />
+                                        <Image Name="image2" Source="{StaticResource ImageSource9}" Visibility="{Binding SelectedTaskInfoButtonVisibility,ElementName=TaskViewUnit}" />
                                         </StackPanel>
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="true">
                                             <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
                                             <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource5}" />
+                                            
                                             <Setter TargetName="panel" Property="Background" Value="#00BEE6FD" />
                                         </Trigger>
                                         <Trigger Property="IsPressed" Value="true">
@@ -64,10 +66,9 @@
                         </Setter>
                     </Style>
                 </Button.Style>
-                <Image Height="120" Source="DetailButton4.png" Stretch="Fill" Width="120"/>
 
             </Button>
-        </Border>
+        
 
         <Button Command="{Binding BtnTaskComplished,ElementName=TaskViewUnit}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="117" Margin="21,16,0,0" RenderTransformOrigin="0.529,1.284" Click="CompleatedTaskButton_Click">
 
