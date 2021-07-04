@@ -74,6 +74,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessorOptionData.cs" />
+    <Compile Include="C2_AskTaskCompleateWindow.xaml.cs">
+      <DependentUpon>C2_AskTaskCompleateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="C2_TaskViewUnit.xaml.cs">
       <DependentUpon>C2_TaskViewUnit.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
     <Compile Include="TaskView.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Task.cs" />
+    <Page Include="C2_AskTaskCompleateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="C2_TaskViewUnit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
