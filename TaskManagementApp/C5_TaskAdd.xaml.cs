@@ -68,17 +68,17 @@ namespace TaskManagementApp
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
             Debug.WriteLine(this.info);
-            if (this.summary.Length >= 150)
+            if (this.summary.Length >= 150 || this.summary.Length <= 0)
             {
                 C5_Error error = new C5_Error(true);
                 error.ShowDialog();
             }
-            if (this.info.Length >= 10000)
+            if (this.info.Length >= 10000 || this.info.Length <= 0)
             {
                 C5_Error error = new C5_Error(false);
                 error.ShowDialog();
             }
-            if (this.info.Length < 10000 && this.summary.Length < 150)
+            if (this.info.Length < 10000 && this.summary.Length < 150 && this.info.Length > 0 && this.summary.Length > 0)
             {
                 tfp.TaskSend(this.summary, this.info, this.priority + 1, this.limit.ToString());
                 Close();

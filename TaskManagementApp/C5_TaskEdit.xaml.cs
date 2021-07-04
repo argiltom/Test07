@@ -71,17 +71,17 @@ namespace TaskManagementApp
             this.info = editInfo.Text;
             this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
-            if (this.summary.Length >= 150)
+            if (this.summary.Length >= 150 || this.summary.Length <= 0)
             {
                 C5_Error error = new C5_Error(true);
                 error.ShowDialog();
             }
-            if (this.info.Length >= 10000)
+            if (this.info.Length >= 10000 || this.info.Length <= 0)
             {
                 C5_Error error = new C5_Error(false);
                 error.ShowDialog();
             }
-            if (this.summary.Length < 150 && this.info.Length < 10000)
+            if (this.info.Length < 10000 && this.summary.Length < 150 && this.info.Length > 0 && this.summary.Length > 0)
             {
                 Debug.WriteLine("どう？");
                 Debug.WriteLine(this.limit);
