@@ -192,6 +192,11 @@ namespace TaskManagementApp
         public List<Task> SerchTaskList(String serchWord, List<Task> inputTaskList)
         {
             List<Task> fullList = inputTaskList;
+            //デフォルトの状態だと全てのリストが表示される．
+            if (serchWord.Equals("タスクの検索")){
+                return fullList;
+            }
+
             List<Task> resultTaskList = new List<Task>();
             foreach (Task task in fullList)
             {

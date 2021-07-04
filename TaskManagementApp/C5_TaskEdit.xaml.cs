@@ -70,6 +70,7 @@ namespace TaskManagementApp
             this.info = editInfo.Text;
             this.priority = editPriority.SelectedIndex;
             this.limit = editLimit.SelectedDate.Value;
+            this.limit = this.limit.AddHours(23.999999);
             if (this.summary.Length >= 150)
             {
                 C5_Error error = new C5_Error(true);

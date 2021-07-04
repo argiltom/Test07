@@ -64,6 +64,9 @@ namespace TaskManagementApp
             this.info = addInfo.Text;
             this.priority = addPriority.SelectedIndex;
             this.limit = addLimit.SelectedDate.Value;
+
+            this.limit=this.limit.AddHours(23.999999);
+
             Debug.WriteLine(this.limit);
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
