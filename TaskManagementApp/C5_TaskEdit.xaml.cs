@@ -76,7 +76,7 @@ namespace TaskManagementApp
 
 
         //***********************************
-        //Class Name:Cancel_Click
+        //Method Name:Cancel_Click
         //Designer:渡邊淳平
         //Date:2021/07/03
         //Function:キャンセルボタンが押されたとき、キャンセル画面を表示
@@ -89,9 +89,9 @@ namespace TaskManagementApp
 
 
         //***********************************
-        //Class Name:AddTask_Click
+        //Method Name:EditTask_Click
         //Designer:渡邊淳平
-        //Date:2021/07/03
+        //Date:2021/07/04
         //Function:編集ボタンが押されたとき、概要か詳細の文字数が条件を満たしていない場合エラー画面を表示。満たした場合タスク書き換えの準備をする。
         //************************************
 

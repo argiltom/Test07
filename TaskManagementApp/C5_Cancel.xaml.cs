@@ -29,36 +29,43 @@ namespace TaskManagementApp
             InitializeComponent();//ウィンドウ初期化
             this.ta = ta;
         }
-        public C5_Cancel(C5_TaskEdit te)//編集画面があるときのコンストラクタ
+        public C5_Cancel(C5_TaskEdit te)//編集画面があるときのコンストラクタ（オーバーロード）
         {
             InitializeComponent();//ウィンドウ初期化
             this.te = te;
         }
 
         //***********************************
-        //Class Name:Yes_Click
+        //Method Name:Yes_Click
         //Designer:渡邊淳平
         //Date:2021/07/03
-        //Function:キャンセルボタンが押されたとき、キャンセル画面を表示
+        //Function:「はい」が押されたとき、追加または編集画面を閉じる。
         //************************************
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            if (ta != null)
+            if (ta != null)//追加からの場合
             {
-                ta.Close();
+                ta.Close();//追加画面を閉じる
 
             }
-            if (te != null)
+            if (te != null)//編集からの場合
             {
-                te.Close();
+                te.Close();//編集画面を閉じる
             }
-            Close();
+            Close();//この画面を閉じる
         }
+
+        //***********************************
+        //Method Name:No_Click
+        //Designer:渡邊淳平
+        //Date:2021/07/03
+        //Function:「いいえ」が押されたとき、このウィンドウを非表示にする。
+        //************************************
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Hide();//このウィンドウを非表示にする。
         }
     }
 }
