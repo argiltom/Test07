@@ -110,7 +110,7 @@ namespace TaskManagementApp
             }
             else if (comparedt1dt2 <0)
             {
-                task.taskNoticeColor = new Color(0, 0, 0).ToString();
+                task.taskNoticeColor = new Color(90, 90, 90).ToString();
             }
             else
             {
