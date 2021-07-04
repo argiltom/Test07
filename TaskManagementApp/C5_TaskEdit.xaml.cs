@@ -97,11 +97,14 @@ namespace TaskManagementApp
 
         private void EditTask_Click(object sender, RoutedEventArgs e)
         {
+
             this.summary = editSummary.Text;//概要のテキストボックスから
             this.info = editInfo.Text;//詳細のテキストボックスから
             this.priority = editPriority.SelectedIndex;//優先度のコンボボックスから
             this.limit = editLimit.SelectedDate.Value;//期限日のデイトピッカーから
+            this.limit = this.limit.AddHours(23.999999);
             if (this.summary.Length >= 150 || this.summary.Length <= 0)//概要が0文字以下150字以上の時
+
             {
                 C5_Error error = new C5_Error(true);//概要のエラー画面表示
                 error.ShowDialog();

@@ -35,6 +35,7 @@ namespace TaskManagementApp
         public static Task selectingTask;
         DispatcherTimer dispatcherTimer;
         AccessorOptionData aod;
+        AccessorTaskList atl;
         /// <summary>
         /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
         /// </summary>
@@ -45,7 +46,7 @@ namespace TaskManagementApp
 
             Console.WriteLine(nowTime.ToString());
             nowTimeView.Text = nowTime.ToString();
-            AccessorTaskList atl = new AccessorTaskList();
+            atl = new AccessorTaskList();
             atl.InitializeJsonData();
             aod = new AccessorOptionData();
             aod.InitializeJsonData();
@@ -191,6 +192,11 @@ namespace TaskManagementApp
         public List<Task> SerchTaskList(String serchWord, List<Task> inputTaskList)
         {
             List<Task> fullList = inputTaskList;
+            //デフォルトの状態だと全てのリストが表示される．
+            if (serchWord.Equals("タスクの検索")){
+                return fullList;
+            }
+
             List<Task> resultTaskList = new List<Task>();
             foreach (Task task in fullList)
             {
@@ -237,6 +243,7 @@ namespace TaskManagementApp
         {
             Console.WriteLine("終了処理!!!");
             dispatcherTimer.Stop();
+            atl.WriteJsonData();
             aod.WriteJsonData();
             //申し訳程度のガベージコレクション
             GC.Collect();

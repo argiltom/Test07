@@ -89,10 +89,14 @@ namespace TaskManagementApp
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
         {
+
             this.summary = addSummary.Text;//概要のテキストボックスから
             this.info = addInfo.Text;//詳細のテキストボックスから
             this.priority = addPriority.SelectedIndex;//優先度のコンボボックスから
             this.limit = addLimit.SelectedDate.Value;//期限日のデイトピッカーから
+            this.limit=this.limit.AddHours(23.999999);
+
+
             Debug.WriteLine(this.limit);
             Debug.WriteLine(this.summary);
             Debug.WriteLine(this.priority);
