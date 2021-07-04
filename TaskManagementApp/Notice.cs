@@ -66,19 +66,28 @@ namespace TaskManagementApp
         public void NoticePopUp(Task temp)//タスク通知M表示　　引数に通知するタスクの情報が必要かも
         {
             // Requires Microsoft.Toolkit.Uwp.Notifications NuGet package version 7.0 or greater
+            int taskInfoLength = temp.taskInfo.Length;//StringのLengthプロパティを参照
+            //200字以上なら 200字以内に抑え込む
+            if (taskInfoLength >= 200)
+            {
+                taskInfoLength = 200;
+            }
             new ToastContentBuilder()
-                .AddArgument("action", "viewConversation")
-                .AddArgument("conversationId", 9813)
-                .AddText(temp.taskSummary)//タスク名とか
-                .AddText(temp.taskLimit)//期限など通知するタスクの情報を書く
-                .AddText(temp.taskInfo)
-                 // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
+                 .AddArgument("action", "viewConversation")
+                 .AddArgument("conversationId", 9813)
+                 .AddText("タスクの期限が迫っています(あと"+comparedt1dt2+"日)\n" + temp.taskSummary)//タスク名とか
+                 .AddText(temp.taskLimit)//期限など通知するタスクの情報を書く
+                 //.AddText(temp.taskInfo)
+                 .AddText(temp.taskInfo.Substring(0,taskInfoLength))
+                    // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 5, your TFM must be net5.0-windows10.0.17763.0 or greater
 
-                
-                .Show(toast =>//////有効期限を設定
-                 {
-                     toast.ExpirationTime = DateTime.Now.AddSeconds(10);
-                 });
+
+                    .Show(toast =>//////有効期限を設定
+                    {
+                         toast.ExpirationTime = DateTime.Now.AddSeconds(10);
+                     });
+            
+
         }
 
         /// <summary>
