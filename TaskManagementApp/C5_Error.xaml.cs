@@ -13,11 +13,11 @@ namespace TaskManagementApp
             InitializeComponent();
             if (isSummary)
             {
-                eMess = "概要は150字までにしてください。";
+                eMess = "概要は１文字以上150字未満にしてください。";
             }
             else
             {
-                eMess = "詳細は10000字までにしてください。";
+                eMess = "詳細は１文字以上10000字未満にしてください。";
             }
             C5_Errormessage em = new C5_Errormessage();
             em.message = eMess;
