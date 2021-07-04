@@ -19,6 +19,8 @@
             <BitmapImage x:Key="ImageSource5" UriSource="./Resources/DetailButton2.png" />
             <BitmapImage x:Key="ImageSource6" UriSource="./Resources/DetailButton3.png" />
             <BitmapImage x:Key="ImageSource7" UriSource="./Resources/TaskBack.png" />
+            <BitmapImage x:Key="ImageSource8" UriSource="./Resources/DetailButton4.png" />
+            <BitmapImage x:Key="ImageSource9" UriSource="./Resources/DetailButton5.png" />
 
         </ResourceDictionary>
     </UserControl.Resources>
@@ -62,6 +64,7 @@
                         </Setter>
                     </Style>
                 </Button.Style>
+                <Image Height="120" Source="DetailButton4.png" Stretch="Fill" Width="120"/>
 
             </Button>
         </Border>
