@@ -120,8 +120,8 @@
         </Button>
 
         <!--通知ランプ Binding lumpOnVisibilityと lumpOffVisibilityを(Visibility型)で DataContainerに入れること-->
-        <Image Height="95" Source="{StaticResource ImageSource16}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOnVisibility}"/>
-        <Image Height="95" Source="{StaticResource ImageSource15}" Stretch="Fill" Width="280" Margin="645,0,349,336" Visibility="{Binding Path=lumpOffVisibility}"/>
+        <Image Height="95" Source="{StaticResource ImageSource16}" Stretch="Fill" Width="280" VerticalAlignment="Top"  Visibility="{Binding Path=lumpOnVisibility}" Margin="645,0,348.6,0"/>
+        <Image Height="95" Source="{StaticResource ImageSource15}" Stretch="Fill" Width="280" VerticalAlignment="Top"  Visibility="{Binding Path=lumpOffVisibility}" Margin="645,0,348.6,0"/>
         <!--/通知ランプ isNoticeをDataContainerに入れること-->
         <TextBlock x:Name="nowTimeView" HorizontalAlignment="Left" Margin="925,25,0,0" TextWrapping="Wrap" Text="現在時刻" VerticalAlignment="Top" Height="44" Width="337" Foreground="#FFFFFFFF" RenderTransformOrigin="-0.778,-0.722" FontSize="30" TextAlignment="Center"/>
         <Button x:Name="notificateButton" HorizontalAlignment="Left" Margin="640,0,0,0" VerticalAlignment="Top" Width="280" Height="95"  RenderTransformOrigin="1.822,0.243" FontSize="20" Click="notificateButton_Click">
@@ -242,43 +242,44 @@
                 </ScrollViewer>
             </Border>
         </Grid>
-        <Grid Margin="935,243,12,263" Grid.RowSpan="2" >
+        <Grid Margin="935,243,12,145" Grid.RowSpan="2" >
 
-            <Border BorderBrush="#111111" BorderThickness="3" Margin="0,-80,0,0" >
+            <Border BorderBrush="#111111" BorderThickness="3" Margin="0,-80,0,119" >
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
                     <TextBlock x:Name="taskInfoViewTextBlock" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" Width="286"  Grid.RowSpan="2" />
                 </ScrollViewer>
             </Border>
+            <Button x:Name="editTaskButton" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="304" Background="#00DDDDDD" Height="107" FontSize="20" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}" Margin="0,0,0,0">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderThickness="0" BorderBrush="#00707070">
+                                        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
+                                            <Image x:Name="image" Source="{StaticResource ImageSource19}" />
+                                        </StackPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
+                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource20}" />
+                                            <Setter TargetName="panel" Property="Background" Value="#00DDDDDD" />
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
+                                            <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource21}" />
+                                            <Setter TargetName="panel" Property="Background" Value="#00DDDDDD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
-        <Button x:Name="editTaskButton" HorizontalAlignment="Left" Margin="935,297,0,0" VerticalAlignment="Top" Width="304" Background="#00DDDDDD" Height="107" FontSize="20" Grid.Row="1" Click="EditTaskButton_Click" Visibility="{Binding Path=EditTaskButtonVisibility}">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="border" BorderThickness="0" BorderBrush="#00707070">
-                                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#00DDDDDD">
-                                        <Image x:Name="image" Source="{StaticResource ImageSource19}" />
-                                    </StackPanel>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter TargetName="border" Property="BorderBrush" Value="#003C7FB1" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource20}" />
-                                        <Setter TargetName="panel" Property="Background" Value="#00DDDDDD" />
-                                    </Trigger>
-                                    <Trigger Property="IsPressed" Value="true">
-                                        <Setter TargetName="border" Property="BorderBrush" Value="#002A597D" />
-                                        <Setter TargetName="image" Property="Source" Value="{StaticResource ImageSource21}" />
-                                        <Setter TargetName="panel" Property="Background" Value="#00DDDDDD" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
+
 
 
 
