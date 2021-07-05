@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagementApp"
         mc:Ignorable="d"
-        Title="C5_Error" Height="450" Width="800">
+        Title="C5_Error" Height="300" Width="600">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=message}" FontSize="50" VerticalAlignment="Top"></TextBlock>
-        <Button Content="CloseButton" HorizontalAlignment="Left" Margin="289,302,0,0" VerticalAlignment="Top" Width="158" Height="64" Click="Back"/>
+        <TextBlock HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=message}" FontSize="25" Margin="0,60,0,0" />
+        <!--<Button Content="CloseButton" HorizontalAlignment="Left" Margin="289,302,0,0" VerticalAlignment="Top" Width="158" Height="64" Click="Back"/>-->
+        <Button  Content="閉じる" FontSize="25" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="128" Height="38" Click="Back" Background="#FF68A46B" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="0.503,-0.289" Margin="230,181,234,0"/>
 
     </Grid>
 </Window>

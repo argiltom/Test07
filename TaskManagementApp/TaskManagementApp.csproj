@@ -216,15 +216,6 @@
     <Resource Include="Resources\SearchButton2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\TaskCompleteButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\TaskCompleteButton3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\TaskCompleteButton2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\ImportanceTab.png" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +262,72 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskCompleteButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskCompleteButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskCompleteButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DetailButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DetailButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DetailButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MainBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEditButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEditButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEditButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CancelButton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CancelButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CancelButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskAdd3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskAdd2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEdit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TaskEdit3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DetailButton5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DetailButton4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

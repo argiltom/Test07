@@ -125,5 +125,10 @@ namespace TaskManagementApp
                 Close();//編集画面を閉じる
             }
         }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
