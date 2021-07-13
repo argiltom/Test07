@@ -16,6 +16,7 @@
             <BitmapImage x:Key="ImageSource5" UriSource="./Resources/TaskAdd2.png" />
             <BitmapImage x:Key="ImageSource6" UriSource="./Resources/TaskAdd3.png" />
             <BitmapImage x:Key="ImageSource7" UriSource="./Resources/TaskBack.png" />
+            <BitmapImage x:Key="ImageSource8" UriSource="./Resources/toumeiRect.png" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -61,7 +62,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="タスク重要度" FontSize="18" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="addPriority"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="タスク期限" FontSize="18" VerticalAlignment="Top"/>
-        <DatePicker x:Name="addLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}" />
+
+
+        <DatePicker x:Name="addLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}" Focusable="False" />
         <Button  x:Name="AddTask" FontSize="18" HorizontalAlignment="Left" Margin="159,328,0,0" VerticalAlignment="Top" Width="171" Height="56" Grid.Column="1" Click="AddTask_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -91,7 +94,7 @@
                 </Style>
             </Button.Style>
         </Button>
-
+        
     </Grid>
 
 </Window>

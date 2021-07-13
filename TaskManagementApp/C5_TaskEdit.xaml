@@ -61,7 +61,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="タスク重要度" FontSize="18" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="editPriority"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="タスク期限" FontSize="18" VerticalAlignment="Top"/>
-        <DatePicker x:Name="editLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}" />
+        <DatePicker x:Name="editLimit" HorizontalAlignment="Left" Margin="111,328,0,0" VerticalAlignment="Top" Height="45" Width="117" SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}"  Focusable="False" />
 
         <Button  x:Name="EditTask" FontSize="18" HorizontalAlignment="Left" Margin="159,328,0,0" VerticalAlignment="Top" Width="171" Height="56" Grid.Column="1" Click="EditTask_Click">
             <Button.Style>
@@ -91,7 +91,6 @@
                     </Setter>
                 </Style>
             </Button.Style>
-            <Image Height="42" Source="TaskEdit3.png" Stretch="Fill" Width="119"/>
         </Button>
 
     </Grid>

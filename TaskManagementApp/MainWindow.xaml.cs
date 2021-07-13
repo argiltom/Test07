@@ -9,6 +9,7 @@ namespace TaskManagementApp
 
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
+    /// 担当者:鈴木智仁
     /// <para> DataContainerに入れること: </para>
     /// <para>  バインディングパス名        (型)   </para>
     /// <para>    SortDaedLineOnVisibility    (Visibility)   </para>
@@ -200,7 +201,8 @@ namespace TaskManagementApp
             List<Task> resultTaskList = new List<Task>();
             foreach (Task task in fullList)
             {
-                if (task.taskSummary.Contains(serchWord))
+                //7/13 日付検索も対応させた
+                if (task.taskSummary.Contains(serchWord)||task.taskLimit.Contains(serchWord))
                 {
                     resultTaskList.Add(task);
                     Console.WriteLine(task.taskSummary);
