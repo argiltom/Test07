@@ -97,7 +97,6 @@ namespace TaskManagementApp
 
         private void EditTask_Click(object sender, RoutedEventArgs e)
         {
-
             this.summary = editSummary.Text;//概要のテキストボックスから
             this.info = editInfo.Text;//詳細のテキストボックスから
             this.priority = editPriority.SelectedIndex;//優先度のコンボボックスから
@@ -124,6 +123,7 @@ namespace TaskManagementApp
                 tfp.TaskChange(this.preTask, this.summary, this.info, this.priority + 1, this.limit.ToString());//タスクリストへの書き換え準備
                 Close();//編集画面を閉じる
             }
+            
         }
     }
 }
