@@ -4,6 +4,12 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 
+//********************
+//Designer:鈴木智仁
+//Date:2021/06/13
+//Purpose:メイン画面の表示処理
+//********************
+
 namespace TaskManagementApp
 {
 

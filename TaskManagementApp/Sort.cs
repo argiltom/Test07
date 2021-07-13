@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+//********************
+//Designer:武藤渉
+//Date:2021/06/15
+//Purpose:タスクリストのソート処理の記述
+//********************
 namespace TaskManagementApp
 {
     /// <summary>

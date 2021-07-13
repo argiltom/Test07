@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿//********************
+//Designer:渡邊淳平
+//Date:2021/07/03
+//Purpose:タスクへのアクセス
+//********************
+using System.Collections.Generic;
 using System.Diagnostics;
 
 

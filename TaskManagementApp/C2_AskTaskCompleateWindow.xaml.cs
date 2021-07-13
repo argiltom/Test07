@@ -1,4 +1,10 @@
-﻿using System;
+﻿//********************
+//Designer:鈴木智仁
+//Date:2021/06/25
+//Purpose:タスクの消去についてユーザに質問する処理
+//********************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

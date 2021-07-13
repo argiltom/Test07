@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
 /// <summary>
-/// 試験用スクリプト
+/// 試験用スクリプト 
 /// </summary>
 namespace TaskManagementApp
 {

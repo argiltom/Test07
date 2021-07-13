@@ -1,4 +1,11 @@
-﻿using System;
+﻿//********************
+//Designer:鈴木智仁
+//Date:2021/06/22
+//Purpose:タスクリスト表示を担当するUserControlの内部挙動を記述する
+//********************
+
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

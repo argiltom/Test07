@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
-
+//********************
+//Designer:鈴木智仁
+//Date:2021/06/15
+//Purpose:タスク情報を表示するStackPanelの制御を行う
+//********************
 namespace TaskManagementApp
 {
     /// <summary>

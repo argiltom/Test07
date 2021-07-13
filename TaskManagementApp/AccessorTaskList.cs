@@ -1,4 +1,11 @@
-﻿using System;
+﻿//********************
+//Designer:鈴木智仁
+//Date:2021/06/12
+//Purpose:TaskListの情報に関して,jsonファイルへのファイル入出力を司る
+//********************
+
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;

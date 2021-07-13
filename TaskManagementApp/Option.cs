@@ -1,5 +1,9 @@
 ﻿using System;
-
+//********************
+//Designer:鈴木智仁
+//Date:2021/06/05
+//Purpose:オプション情報のデータ構造を記述する
+//********************
 namespace TaskManagementApp
 {
     public enum SortOption { priority, limit }

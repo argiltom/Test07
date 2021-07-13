@@ -1,6 +1,13 @@
-﻿using System;
+﻿//********************
+//Designer:鈴木智仁
+//Date:2021/06/12
+//Purpose:Option情報に関して,jsonファイルへのファイル入出力を司る
+//********************
+
+using System;
 using System.IO;
 using System.Text.Json;
+
 
 namespace TaskManagementApp
 {

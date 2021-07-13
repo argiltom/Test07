@@ -7,7 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-
+//********************
+//Designer:増井祐貴
+//Date:2021/06/20
+//Purpose:タスク通知の処理
+//********************
 namespace TaskManagementApp
 {
     /// <summary>
