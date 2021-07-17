@@ -47,6 +47,10 @@ namespace TaskManagementApp
         /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
         /// </summary>
         List<Task> taskSerchResult;
+        /// <summary>
+        /// 常時タスクを篩に掛けるための文字列
+        /// </summary>
+        String searchingTaskKey = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -93,6 +97,10 @@ namespace TaskManagementApp
             {
                 taskInfoViewTextBlock.Text = "タスクを選択して下さい";
             }
+
+            //タスク検索ボタンが押された際の検索情報をsearchingTaskKeyに保持している
+            //それを元に検索結果を常時更新
+            taskSerchResult = SerchTaskList(searchingTaskKey, AccessorTaskList.taskList);
 
             TaskViewStackPanelController.UpdateTaskViewStakPanel(SPtaskView, Sort.MainSort(taskSerchResult));
 
@@ -193,7 +201,8 @@ namespace TaskManagementApp
         }
         private void SerchTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            taskSerchResult = SerchTaskList(serchTextBox.Text, AccessorTaskList.taskList);
+            //タスク常時検索キーを更新
+            searchingTaskKey = serchTextBox.Text;
             Console.WriteLine("タスク検索中=" + serchTextBox.Text);
         }
         public List<Task> SerchTaskList(String serchWord, List<Task> inputTaskList)
