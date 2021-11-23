@@ -60,7 +60,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,132,0,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top"><Run Text="タスク"/><Run Text="詳細"/></TextBlock>
         <TextBox x:Name="addInfo" HorizontalAlignment="Left" Height="94" Margin="10,159,0,0" TextWrapping="Wrap" Text="" FontSize="20" VerticalAlignment="Top" Width="706" Grid.ColumnSpan="2" AcceptsReturn="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,274,0,0" TextWrapping="Wrap" Text="タスク重要度" FontSize="18" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="addPriority"/>
+        <ComboBox HorizontalAlignment="Left" Margin="127,276,0,0" VerticalAlignment="Top" Width="60" ItemsSource="{Binding Path=Data}" x:Name="addPriority" SelectionChanged="addPriority_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="タスク期限" FontSize="18" VerticalAlignment="Top"/>
 
 
