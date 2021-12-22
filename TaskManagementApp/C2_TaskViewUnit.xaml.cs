@@ -116,7 +116,7 @@ namespace TaskManagementApp
         }
 
         /// <summary>
-        /// xamlのTaskImportanceTextと連携(依存関係プロパティ)
+        /// xamlのTaskRemainingTextと連携(依存関係プロパティ)
         /// </summary>
         public static readonly DependencyProperty TaskRemainingTextProperty =
             DependencyProperty.Register(
@@ -139,6 +139,7 @@ namespace TaskManagementApp
                 SetValue(TaskRemainingTextProperty, value);
             }
         }
+
 
         /// <summary>
         /// xamlのTaskNoticeColorと連携(依存関係プロパティ)
@@ -255,10 +256,21 @@ namespace TaskManagementApp
         {
             //表示の常時更新
             SummaryText = task.taskSummary;
+            double diffOfNowAndLimit = (DateTime.Parse(task.taskLimit).Date - DateTime.Now.Date).TotalDays;
+            
+            if (diffOfNowAndLimit >= 0)
+            {
+                TaskRemainingText = "(あと:" + (int)(diffOfNowAndLimit) + "日)";
+            }
+            else
+            {
+                TaskRemainingText = "(期日:" + (int)(diffOfNowAndLimit * -1) + "日前)";
+            }
             TaskLimitText = "期限：" + task.taskLimit;
             TaskImportanceText = "重要度:" + task.taskPriority;
-            double diffOfNowAndLimit = (DateTime.Parse(task.taskLimit).Date - DateTime.Now.Date).TotalDays;
-            TaskRemainingText = "あと:" + (int)(diffOfNowAndLimit);
+
+            
+
             TaskNoticeColor = task.taskNoticeColor;
             //現在選択しているタスクが自分であるなら
             if (MainWindow.selectingTask != null && MainWindow.selectingTask == task)
