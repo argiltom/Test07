@@ -60,6 +60,8 @@ namespace TaskManagementApp
         {
             AccessorTaskList atl = new AccessorTaskList();
             atl.RemoveTaskList(task);
+            AccessorComplishedTaskList actl = new AccessorComplishedTaskList();
+            actl.AddTaskList(task);
             Close();
         }
         private void No_Click(object sender, RoutedEventArgs e)

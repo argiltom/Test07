@@ -73,6 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccessorComplishedTaskList.cs" />
     <Compile Include="AccessorOptionData.cs" />
     <Compile Include="C2_AskTaskCompleateWindow.xaml.cs">
       <DependentUpon>C2_AskTaskCompleateWindow.xaml</DependentUpon>

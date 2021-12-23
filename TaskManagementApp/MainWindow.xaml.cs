@@ -43,6 +43,7 @@ namespace TaskManagementApp
         DispatcherTimer dispatcherTimer;
         AccessorOptionData aod;
         AccessorTaskList atl;
+        AccessorComplishedTaskList actl;
         /// <summary>
         /// 検索結果のリストを格納する.　これが実際に表示されるタスクの内容を格納する先である
         /// </summary>
@@ -61,10 +62,11 @@ namespace TaskManagementApp
             atl.InitializeJsonData();
             aod = new AccessorOptionData();
             aod.InitializeJsonData();
+            actl = new AccessorComplishedTaskList();
+            actl.InitializeJsonData();
             //taskSerchResultの初期化
             taskSerchResult = AccessorTaskList.taskList;
             //TaskView taskview = new TaskView(taskViewGrid);
-
             dispatcherTimer = new DispatcherTimer();
 
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(200);
@@ -262,6 +264,7 @@ namespace TaskManagementApp
             dispatcherTimer.Stop();
             atl.WriteJsonData();
             aod.WriteJsonData();
+            actl.WriteJsonData();
             //申し訳程度のガベージコレクション
             GC.Collect();
             base.OnClosing(e);
