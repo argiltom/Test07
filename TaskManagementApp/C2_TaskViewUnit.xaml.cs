@@ -238,6 +238,7 @@ namespace TaskManagementApp
             SummaryText = task.taskSummary;
             TaskLimitText = "期限：" + task.taskLimit;
             TaskImportanceText = "重要度:" + task.taskPriority;
+            TaskRemainingText = "遂行期限";
             TaskNoticeColor = task.taskNoticeColor;
 
             //タスクビューの更新をマルチスレッディングで更新
